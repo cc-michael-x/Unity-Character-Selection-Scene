@@ -88,8 +88,8 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   filtering:
-    overrideState: 0
-    value: {x: 50, y: 95}
+    overrideState: 1
+    value: {x: 53.99996, y: 99}
   minLuminance:
     overrideState: 0
     value: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
     value: 0
   speedUp:
     overrideState: 0
-    value: 2
+    value: 1
   speedDown:
     overrideState: 0
     value: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
     value: 5
   threshold:
     overrideState: 1
-    value: 1
+    value: 0.9
   softKnee:
     overrideState: 0
     value: 0.5
