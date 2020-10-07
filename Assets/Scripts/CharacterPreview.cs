@@ -6,9 +6,17 @@ using UnityEngine;
 
 public class CharacterPreview : MonoBehaviour
 {
-    public GameObject cmFreeLookCam;
-    public GameObject cmFreeLookPoint;
-
+    [Header("Cameras")]
+    public GameObject defaultCmFreeLookCam;
+    public GameObject characterCmFreeLookCam;
+    
+    [Header("Sounds")]
+    public AudioSource characterPreviewOnOnClickSound;
+    public AudioSource characterPreviewOffOnClickSound;
+    
+    private bool _characterPreview = false;
+    private CinemachineFreeLook _cmDefaultFreeLook;
+    private CinemachineFreeLook _cmCharacterFreeLook;
     private CharacterHeadLookAtCamera _characterHeadLookAtCamera;
     private Animator _animator;
     private static readonly int Preview = Animator.StringToHash("CharacterPreview");
@@ -17,15 +25,33 @@ public class CharacterPreview : MonoBehaviour
     {
         _characterHeadLookAtCamera = gameObject.GetComponent<CharacterHeadLookAtCamera>();
         _animator = gameObject.GetComponent<Animator>();
+        _cmDefaultFreeLook = defaultCmFreeLookCam.GetComponent<CinemachineFreeLook>();
+        _cmCharacterFreeLook = characterCmFreeLookCam.GetComponent<CinemachineFreeLook>();
     }
 
     void OnMouseDown()
     {
-        _characterHeadLookAtCamera.enabled = true;
-        
-        cmFreeLookCam.GetComponent<CinemachineFreeLook>().Follow = cmFreeLookPoint.transform;
-        cmFreeLookCam.GetComponent<CinemachineFreeLook>().LookAt = cmFreeLookPoint.transform;
-        
-        _animator.SetBool(Preview, true);
+        if (!_characterPreview)
+        {
+            _characterPreview = true;
+            
+            characterPreviewOnOnClickSound.Play();
+
+            _characterHeadLookAtCamera.enabled = true;
+
+            _cmDefaultFreeLook.enabled = false;
+            _cmCharacterFreeLook.enabled = true;
+        }
+        else
+        {
+            _characterPreview = false;
+            
+            characterPreviewOffOnClickSound.Play();
+            
+            _characterHeadLookAtCamera.enabled = false;
+
+            _cmDefaultFreeLook.enabled = true;
+            _cmCharacterFreeLook.enabled = false;
+        }
     }
 }
