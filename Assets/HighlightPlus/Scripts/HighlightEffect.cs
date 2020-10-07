@@ -1474,9 +1474,7 @@ namespace HighlightPlus {
                     break;
                 case TargetOptions.RootToChildren:
                     Transform root = target;
-                    while (root.parent != null && root.parent.gameObject.name != "Characters") {
-                        root = root.parent;
-                    }
+                    root = transform.parent;
                     rr = root.GetComponentsInChildren<Renderer>();
                     break;
                 case TargetOptions.LayerInScene: {
