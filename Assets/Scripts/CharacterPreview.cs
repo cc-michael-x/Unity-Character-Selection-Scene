@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class CharacterPreview : MonoBehaviour
 {
+    [Header("Config")]
+    public string characterName;
+    
     [Header("Cameras")]
     public GameObject defaultCmFreeLookCam;
     public GameObject characterCmFreeLookCam;
@@ -23,6 +26,7 @@ public class CharacterPreview : MonoBehaviour
 
     private void Start()
     {
+        characterName = transform.parent.gameObject.name;
         _characterHeadLookAtCamera = gameObject.GetComponent<CharacterHeadLookAtCamera>();
         _animator = gameObject.GetComponent<Animator>();
         _cmDefaultFreeLook = defaultCmFreeLookCam.GetComponent<CinemachineFreeLook>();
@@ -37,7 +41,7 @@ public class CharacterPreview : MonoBehaviour
         if (!_characterPreview)
         {
             // set this character as the current character preview
-            GameManager.Instance.SetCurrentCharacterPreview(gameObject.name);
+            GameManager.Instance.SetCurrentCharacterPreview(characterName);
             
             // character preview is now ON for this character
             _characterPreview = true;
