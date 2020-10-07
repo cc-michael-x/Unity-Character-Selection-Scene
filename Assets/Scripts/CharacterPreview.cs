@@ -7,10 +7,19 @@ using UnityEngine;
 
 public class CharacterPreview : MonoBehaviour
 {
-    [Header("Config")]
+    [Header("Character Description")]
+    [Tooltip("The characterName will be automatically set using the name of the root game object of the character")]
     public string characterName;
+    [Multiline]
+    public string characterNameDescriptionText;
     public GameObject characterPreviewCanvas;
-    public TextMeshProUGUI characterNameText;
+    public GameObject characterDescriptionParent;
+    
+    [Header("Character Description Components")]
+    private TextMeshProUGUI _characterNameText;
+    private TextMeshProUGUI _characterNameDescription;
+    private const string CharacterNameTextObjectName = "CharacterNameText";
+    private const string CharacterDescriptionTextObjectName = "CharacterDescriptionText";
     
     [Header("Cameras")]
     public GameObject defaultCmFreeLookCam;
@@ -30,8 +39,14 @@ public class CharacterPreview : MonoBehaviour
 
     private void Start()
     {
+        // get TextMeshProUGUI character description objects
+        _characterNameText = FindGameObjectInChildren(characterDescriptionParent, CharacterNameTextObjectName);
+        _characterNameDescription = FindGameObjectInChildren(characterDescriptionParent, CharacterDescriptionTextObjectName);
+        
+        // set character preview description
         characterName = transform.parent.gameObject.name;
-        characterNameText.text = characterName;
+        _characterNameText.text = characterName;
+        _characterNameDescription.text = characterNameDescriptionText;
         
         _characterHeadLookAtCamera = gameObject.GetComponent<CharacterHeadLookAtCamera>();
         _animator = gameObject.GetComponent<Animator>();
@@ -87,5 +102,22 @@ public class CharacterPreview : MonoBehaviour
             
             characterPreviewCanvas.SetActive(false);
         }
+    }
+
+    // return a TextMeshProUGUI GameObject that was found in the list of child objects in parent object
+    private static TextMeshProUGUI FindGameObjectInChildren(GameObject parentGameObject, string nameOfGameObjectToFind)
+    {
+        // sift through a list of child objects to find the specific one
+        for (var i = 0; i < parentGameObject.transform.childCount; i++)
+        {
+            // object is not what we're looking for
+            if (parentGameObject.transform.GetChild(i).gameObject.name !=
+                nameOfGameObjectToFind) continue;
+            
+            // found the game object we're looking for
+            return parentGameObject.transform.GetChild(i).gameObject.GetComponent<TextMeshProUGUI>();
+        }
+
+        return null;
     }
 }
