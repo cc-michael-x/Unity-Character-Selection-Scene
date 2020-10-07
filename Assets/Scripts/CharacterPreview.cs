@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using TMPro;
 using UnityEngine;
 
 public class CharacterPreview : MonoBehaviour
@@ -9,6 +10,7 @@ public class CharacterPreview : MonoBehaviour
     [Header("Config")]
     public string characterName;
     public GameObject characterPreviewCanvas;
+    public TextMeshProUGUI characterNameText;
     
     [Header("Cameras")]
     public GameObject defaultCmFreeLookCam;
@@ -29,6 +31,8 @@ public class CharacterPreview : MonoBehaviour
     private void Start()
     {
         characterName = transform.parent.gameObject.name;
+        characterNameText.text = characterName;
+        
         _characterHeadLookAtCamera = gameObject.GetComponent<CharacterHeadLookAtCamera>();
         _animator = gameObject.GetComponent<Animator>();
         _cmDefaultFreeLook = defaultCmFreeLookCam.GetComponent<CinemachineFreeLook>();
