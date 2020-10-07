@@ -21,11 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9a0c28f0-f02d-473c-8c87-42de10469498" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HighlightPlus/Scripts/HighlightEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HighlightPlus/Scripts/HighlightEffect.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/Highlight Plus Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/Highlight Plus Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Components/CharacterPreviewComponents.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Components/CharacterPreviewComponents.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +43,8 @@
         <option value="$PROJECT_DIR$/Assets/CMFreelookOnlyWhenRightMouseDown.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterHeadLookAtCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/HighlightPlus/Scripts/HighlightEffect.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" />
       </list>
     </option>
   </component>
@@ -98,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602010052895</updated>
       <workItem from="1602010058331" duration="659000" />
-      <workItem from="1602013372624" duration="12868000" />
+      <workItem from="1602013372624" duration="14807000" />
     </task>
     <servers />
   </component>

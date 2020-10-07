@@ -8,6 +8,7 @@ public class CharacterPreview : MonoBehaviour
 {
     [Header("Config")]
     public string characterName;
+    public GameObject characterPreviewCanvas;
     
     [Header("Cameras")]
     public GameObject defaultCmFreeLookCam;
@@ -16,6 +17,7 @@ public class CharacterPreview : MonoBehaviour
     [Header("Sounds")]
     public AudioSource characterPreviewOnOnClickSound;
     public AudioSource characterPreviewOffOnClickSound;
+    public AudioSource bookSound;
     
     private bool _characterPreview;
     private CinemachineFreeLook _cmDefaultFreeLook;
@@ -48,6 +50,7 @@ public class CharacterPreview : MonoBehaviour
             
             // play on select click sound
             characterPreviewOnOnClickSound.Play();
+            bookSound.Play();
 
             // enable the free look vcam for this character
             _characterHeadLookAtCamera.enabled = true;
@@ -56,6 +59,8 @@ public class CharacterPreview : MonoBehaviour
             _cmDefaultFreeLook.enabled = false;
             // enable the free look vcam for this character
             _cmCharacterFreeLook.enabled = true;
+            
+            characterPreviewCanvas.SetActive(true);
         }
         else
         {
@@ -75,6 +80,8 @@ public class CharacterPreview : MonoBehaviour
             _cmDefaultFreeLook.enabled = true;
             // disable the free look vcam for this character
             _cmCharacterFreeLook.enabled = false;
+            
+            characterPreviewCanvas.SetActive(false);
         }
     }
 }

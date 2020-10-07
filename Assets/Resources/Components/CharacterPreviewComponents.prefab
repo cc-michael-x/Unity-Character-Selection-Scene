@@ -149,7 +149,7 @@ MonoBehaviour:
   seeThroughBorder: 0
   seeThroughBorderColor: {r: 0, g: 0, b: 0, a: 1}
   seeThroughBorderWidth: 0.45
-  rmsCount: 19
+  rmsCount: 0
 --- !u!114 &7391708193246955643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2348a5c613d80ca48a63e6415428a2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Witch
+  characterName: 
   defaultCmFreeLookCam: {fileID: 0}
   characterCmFreeLookCam: {fileID: 0}
   characterPreviewOnOnClickSound: {fileID: 0}
