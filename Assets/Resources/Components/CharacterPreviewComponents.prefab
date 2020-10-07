@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888380afc233049ce9e618f9f36c8ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 9ef04c321f24ff5419fb0513cd486b4d, type: 2}
+  profile: {fileID: 11400000, guid: 58466b7a83b68ba4f9decde0502089fb, type: 2}
   profileSync: 1
   previewInEditor: 1
   effectGroup: 2
@@ -83,14 +83,14 @@ MonoBehaviour:
   flipY: 0
   constantWidth: 1
   subMeshMask: -1
-  overlay: 0
-  overlayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  overlay: 0.15
+  overlayColor: {r: 1, g: 1, b: 1, a: 1}
   overlayAnimationSpeed: 1
-  overlayMinIntensity: 0
+  overlayMinIntensity: 0.1
   overlayBlending: 1
   outline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 0.5
+  outlineWidth: 0.45
   outlineQuality: 1
   outlineDownsampling: 2
   outlineVisibility: 0
@@ -103,9 +103,9 @@ MonoBehaviour:
   glowDownsampling: 2
   glowHQColor: {r: 0.64, g: 1, b: 0, a: 1}
   glowDithering: 1
-  glowMagicNumber1: 0.75
-  glowMagicNumber2: 0.5
-  glowAnimationSpeed: 1
+  glowMagicNumber1: 0.3
+  glowMagicNumber2: 0.1
+  glowAnimationSpeed: 0.5
   glowVisibility: 0
   glowOptimalBlit: 1
   glowBlitDebug: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   targetFXEndScale: 1.5
   targetFXTransitionDuration: 0.5
   targetFXStayDuration: 1.5
-  seeThrough: 0
+  seeThrough: 2
   seeThroughOccluderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -198,10 +198,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: 
+  characterNameDescriptionText: 
+  characterPreviewCanvas: {fileID: 0}
+  characterDescriptionParent: {fileID: 0}
   defaultCmFreeLookCam: {fileID: 0}
   characterCmFreeLookCam: {fileID: 0}
+  glowingHighlightProfile: {fileID: 0}
+  triggerHighlightProfile: {fileID: 0}
+  triggerHighlightEffect: {fileID: 0}
+  highlightTrigger: {fileID: 0}
   characterPreviewOnOnClickSound: {fileID: 0}
   characterPreviewOffOnClickSound: {fileID: 0}
+  bookSound: {fileID: 0}
 --- !u!114 &7391708193246955644
 MonoBehaviour:
   m_ObjectHideFlags: 0

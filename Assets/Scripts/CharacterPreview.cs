@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using HighlightPlus;
 using TMPro;
 using UnityEngine;
 
@@ -24,6 +25,12 @@ public class CharacterPreview : MonoBehaviour
     [Header("Cameras")]
     public GameObject defaultCmFreeLookCam;
     public GameObject characterCmFreeLookCam;
+
+    [Header("Highlight Effects")] 
+    public HighlightProfile glowingHighlightProfile;
+    public HighlightProfile triggerHighlightProfile;
+    private HighlightEffect _triggerHighlightEffect;
+    private HighlightTrigger _highlightTrigger;
     
     [Header("Sounds")]
     public AudioSource characterPreviewOnOnClickSound;
@@ -39,6 +46,14 @@ public class CharacterPreview : MonoBehaviour
 
     private void Start()
     {
+        _triggerHighlightEffect = gameObject.GetComponent<HighlightEffect>();
+        _highlightTrigger = gameObject.GetComponent<HighlightTrigger>();
+        
+        _triggerHighlightEffect.profile = glowingHighlightProfile;
+        _triggerHighlightEffect.ProfileReload();
+        _triggerHighlightEffect.highlighted = true;
+        _highlightTrigger.enabled = false;
+        
         // get TextMeshProUGUI character description objects
         _characterNameText = FindGameObjectInChildren(characterDescriptionParent, CharacterNameTextObjectName);
         _characterNameDescription = FindGameObjectInChildren(characterDescriptionParent, CharacterDescriptionTextObjectName);
@@ -52,6 +67,23 @@ public class CharacterPreview : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
         _cmDefaultFreeLook = defaultCmFreeLookCam.GetComponent<CinemachineFreeLook>();
         _cmCharacterFreeLook = characterCmFreeLookCam.GetComponent<CinemachineFreeLook>();
+    }
+
+    private void OnMouseOver()
+    {        
+        _highlightTrigger.enabled = true;
+
+        _triggerHighlightEffect.profile = triggerHighlightProfile;
+        _triggerHighlightEffect.ProfileReload();
+    }
+
+    private void OnMouseExit()
+    {
+        _highlightTrigger.enabled = false;
+
+        _triggerHighlightEffect.profile = glowingHighlightProfile;
+        _triggerHighlightEffect.ProfileReload();
+        _triggerHighlightEffect.highlighted = true;
     }
 
     void OnMouseDown()
