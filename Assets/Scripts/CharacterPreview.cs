@@ -14,7 +14,7 @@ public class CharacterPreview : MonoBehaviour
     public AudioSource characterPreviewOnOnClickSound;
     public AudioSource characterPreviewOffOnClickSound;
     
-    private bool _characterPreview = false;
+    private bool _characterPreview;
     private CinemachineFreeLook _cmDefaultFreeLook;
     private CinemachineFreeLook _cmCharacterFreeLook;
     private CharacterHeadLookAtCamera _characterHeadLookAtCamera;
@@ -31,26 +31,45 @@ public class CharacterPreview : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (!enabled)
+            return;
+        
         if (!_characterPreview)
         {
+            // set this character as the current character preview
+            GameManager.Instance.SetCurrentCharacterPreview(gameObject.name);
+            
+            // character preview is now ON for this character
             _characterPreview = true;
             
+            // play on select click sound
             characterPreviewOnOnClickSound.Play();
 
+            // enable the free look vcam for this character
             _characterHeadLookAtCamera.enabled = true;
 
+            // disable the default free look vcam
             _cmDefaultFreeLook.enabled = false;
+            // enable the free look vcam for this character
             _cmCharacterFreeLook.enabled = true;
         }
         else
         {
+            // deselect this character as the current character preview
+            GameManager.Instance.SetCurrentCharacterPreview("");
+            
+            // character preview is now OFF for this character
             _characterPreview = false;
             
+            // play on deselect click sound
             characterPreviewOffOnClickSound.Play();
             
+            // disable the free look vcam for this character
             _characterHeadLookAtCamera.enabled = false;
 
+            // enable the default free look vcam
             _cmDefaultFreeLook.enabled = true;
+            // disable the free look vcam for this character
             _cmCharacterFreeLook.enabled = false;
         }
     }

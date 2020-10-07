@@ -20,18 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a0c28f0-f02d-473c-8c87-42de10469498" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/Infoseeker Animator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animators/Infoseeker Animator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/Witch Animator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animators/Witch Animator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props/FX_CandleFlame_Single.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props/FX_CandleFlame_Single.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props/SM_Item_Candlestick_03.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props/SM_Item_Candlestick_03.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props/SM_Item_Candlestick_06.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props/SM_Item_Candlestick_06.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props/SM_Prop_Torch_02.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Props/SM_Prop_Torch_02.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" afterDir="false" />
     </list>
@@ -44,6 +34,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -51,6 +42,7 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/CMFreelookOnlyWhenRightMouseDown.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterHeadLookAtCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" />
       </list>
     </option>
@@ -103,7 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602010052895</updated>
       <workItem from="1602010058331" duration="659000" />
-      <workItem from="1602013372624" duration="6674000" />
+      <workItem from="1602013372624" duration="10313000" />
     </task>
     <servers />
   </component>
@@ -127,9 +119,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602018254197">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602037871533">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602018254197" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602037871533" />
   </component>
 </project>
