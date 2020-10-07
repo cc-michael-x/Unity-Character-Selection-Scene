@@ -46,9 +46,11 @@ public class CharacterPreview : MonoBehaviour
 
     private void Start()
     {
+        // get highlight components for character
         _triggerHighlightEffect = gameObject.GetComponent<HighlightEffect>();
         _highlightTrigger = gameObject.GetComponent<HighlightTrigger>();
         
+        // handle initial highlight characters setup
         _triggerHighlightEffect.profile = glowingHighlightProfile;
         _triggerHighlightEffect.ProfileReload();
         _triggerHighlightEffect.highlighted = true;
@@ -69,18 +71,18 @@ public class CharacterPreview : MonoBehaviour
         _cmCharacterFreeLook = characterCmFreeLookCam.GetComponent<CinemachineFreeLook>();
     }
 
+    // handle highlighting the characters when we hover over the characters anymore
     private void OnMouseOver()
-    {        
+    {
         _highlightTrigger.enabled = true;
-
         _triggerHighlightEffect.profile = triggerHighlightProfile;
         _triggerHighlightEffect.ProfileReload();
     }
 
+    // handle highlighting the characters when we don't hover over the characters anymore
     private void OnMouseExit()
     {
         _highlightTrigger.enabled = false;
-
         _triggerHighlightEffect.profile = glowingHighlightProfile;
         _triggerHighlightEffect.ProfileReload();
         _triggerHighlightEffect.highlighted = true;
