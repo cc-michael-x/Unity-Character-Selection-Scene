@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
                 x = characters.transform.GetChild(i).transform.childCount;
             }
         }
+        
+        // confine the cursor to the screen
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void SetCurrentCharacterPreview(string characterName)

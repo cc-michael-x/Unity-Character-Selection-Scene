@@ -36,6 +36,8 @@ public class CharacterPreview : MonoBehaviour
     public AudioSource characterPreviewOnOnClickSound;
     public AudioSource characterPreviewOffOnClickSound;
     public AudioSource bookSound;
+    public AudioSource characterPreviewHoverEnterSound;
+    public AudioSource characterPreviewHoverExitSound;
     
     private bool _characterPreview;
     private CinemachineFreeLook _cmDefaultFreeLook;
@@ -71,6 +73,11 @@ public class CharacterPreview : MonoBehaviour
         _cmCharacterFreeLook = characterCmFreeLookCam.GetComponent<CinemachineFreeLook>();
     }
 
+    private void OnMouseEnter()
+    {
+        characterPreviewHoverEnterSound.Play();
+    }
+
     // handle highlighting the characters when we hover over the characters anymore
     private void OnMouseOver()
     {
@@ -82,6 +89,8 @@ public class CharacterPreview : MonoBehaviour
     // handle highlighting the characters when we don't hover over the characters anymore
     private void OnMouseExit()
     {
+        characterPreviewHoverExitSound.Play();
+        
         _highlightTrigger.enabled = false;
         _triggerHighlightEffect.profile = glowingHighlightProfile;
         _triggerHighlightEffect.ProfileReload();
