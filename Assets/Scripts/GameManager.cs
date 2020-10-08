@@ -11,9 +11,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public GameObject characters;
-    public GameObject[] _characters;
+    public GameObject[] charactersArray;
 
     public Texture2D defaultCursor;
+
+    public GameObject moveCameraMouseTipCanvas;
     
     private void Start()
     {
@@ -21,14 +23,14 @@ public class GameManager : MonoBehaviour
 
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
         
-        _characters = new GameObject[characters.transform.childCount];
-        for (int i = 0; i < characters.transform.childCount; i++)
+        charactersArray = new GameObject[characters.transform.childCount];
+        for (var i = 0; i < characters.transform.childCount; i++)
         {
-            for (int x = 0; x < characters.transform.GetChild(i).transform.childCount; x++)
+            for (var x = 0; x < characters.transform.GetChild(i).transform.childCount; x++)
             {
                 if (characters.transform.GetChild(i).GetChild(x).gameObject.name !=
                     CharacterPreviewComponents) continue;
-                _characters[i] = characters.transform.GetChild(i).GetChild(x).gameObject;
+                charactersArray[i] = characters.transform.GetChild(i).GetChild(x).gameObject;
                 x = characters.transform.GetChild(i).transform.childCount;
             }
         }
@@ -37,10 +39,16 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
 
+    private void Update()
+    {
+        if(Input.GetMouseButton(1))
+            moveCameraMouseTipCanvas.SetActive(false);
+    }
+
     public void SetCurrentCharacterPreview(string characterName)
     {
         GameObject[] nonSelectedCharacterPreviews = 
-            _characters.Where(character => character.GetComponent<CharacterPreview>().characterName != characterName).ToArray();
+            charactersArray.Where(character => character.GetComponent<CharacterPreview>().characterName != characterName).ToArray();
 
         foreach (var nonSelectedCharacterPreview in nonSelectedCharacterPreviews)
         {
