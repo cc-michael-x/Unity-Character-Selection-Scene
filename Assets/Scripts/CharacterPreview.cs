@@ -5,6 +5,7 @@ using Cinemachine;
 using HighlightPlus;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CharacterPreview : MonoBehaviour
 {
@@ -126,10 +127,13 @@ public class CharacterPreview : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (IsTheMouseStateLocked())
+        if (!enabled)
             return;
         
-        if (!enabled)
+        if (IsTheMouseStateLocked())
+            return;
+
+        if (EventSystem.current.IsPointerOverGameObject())
             return;
         
         if (!_characterPreview)

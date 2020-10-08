@@ -439,6 +439,7 @@
         <e p="Scripts" t="Include">
           <e p="CharacterHeadLookAtCamera.cs" t="Include" />
           <e p="CharacterPreview.cs" t="Include" />
+          <e p="CharacterPreviewSelectButtonHandler.cs" t="Include" />
           <e p="CMFreelookOnlyWhenRightMouseDown.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
         </e>
