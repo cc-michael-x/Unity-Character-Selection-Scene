@@ -82,6 +82,19 @@ public class CharacterPreview : MonoBehaviour
         _cmCharacterFreeLook = characterCmFreeLookCam.GetComponent<CinemachineVirtualCamera>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKey("escape"))
+        {
+            if (!enabled)
+                return;
+            
+            if(_characterPreview)
+                LeaveCharacterPreview();
+        }
+            
+    }
+
     // the mouse state is locked when the user is moving the camera while holding down the right mouse button
     private bool IsTheMouseStateLocked()
     {
@@ -170,26 +183,31 @@ public class CharacterPreview : MonoBehaviour
         }
         else
         {
-            // deselect this character as the current character preview
-            GameManager.Instance.SetCurrentCharacterPreview("");
-            
-            // character preview is now OFF for this character
-            _characterPreview = false;
-            
-            // play on deselect click sound
-            characterPreviewOffOnClickSound.Play();
-            
-            // disable the free look vcam for this character
-            _characterHeadLookAtCamera.enabled = false;
-
-            // enable the default free look vcam
-            _cmDefaultFreeLook.enabled = true;
-            // disable the free look vcam for this character
-            _cmCharacterFreeLook.enabled = false;
-            
-            _characterPreviewAnimator.SetBool(Preview, false);
-            _characterPreviewAnimator.SetBool(Play, true);
+            LeaveCharacterPreview();
         }
+    }
+
+    private void LeaveCharacterPreview()
+    {
+        // deselect this character as the current character preview
+        GameManager.Instance.SetCurrentCharacterPreview("");
+
+        // character preview is now OFF for this character
+        _characterPreview = false;
+
+        // play on deselect click sound
+        characterPreviewOffOnClickSound.Play();
+
+        // disable the free look vcam for this character
+        _characterHeadLookAtCamera.enabled = false;
+
+        // enable the default free look vcam
+        _cmDefaultFreeLook.enabled = true;
+        // disable the free look vcam for this character
+        _cmCharacterFreeLook.enabled = false;
+
+        _characterPreviewAnimator.SetBool(Preview, false);
+        _characterPreviewAnimator.SetBool(Play, true);
     }
 
     // return a TextMeshProUGUI GameObject that was found in the list of child objects in parent object
