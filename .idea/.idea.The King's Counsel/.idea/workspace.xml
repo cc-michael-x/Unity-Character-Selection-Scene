@@ -20,12 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a0c28f0-f02d-473c-8c87-42de10469498" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/NPC/Soldier Animator2.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animators/NPC/Soldier Animator2.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CmFreelookOnlyWhenRightMouseDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CmFreelookOnlyWhenRightMouseDown.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,9 +43,9 @@
         <option value="$PROJECT_DIR$/Assets/CMFreelookOnlyWhenRightMouseDown.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterHeadLookAtCamera.cs" />
         <option value="$PROJECT_DIR$/Assets/HighlightPlus/Scripts/HighlightEffect.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CmFreelookOnlyWhenRightMouseDown.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" />
       </list>
     </option>
   </component>
@@ -102,7 +99,7 @@
       <workItem from="1602010058331" duration="659000" />
       <workItem from="1602013372624" duration="15796000" />
       <workItem from="1602077609992" duration="7168000" />
-      <workItem from="1602165238901" duration="1064000" />
+      <workItem from="1602165238901" duration="1778000" />
     </task>
     <servers />
   </component>

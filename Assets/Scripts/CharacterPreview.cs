@@ -31,6 +31,11 @@ public class CharacterPreview : MonoBehaviour
     public HighlightProfile triggerHighlightProfile;
     private HighlightEffect _triggerHighlightEffect;
     private HighlightTrigger _highlightTrigger;
+
+    [Header("Cursor Images")] 
+    public Texture2D defaultCursor;
+    public Texture2D characterPreviewHoverCursor;
+    public Texture2D characterPreviewHoverExitCursor;
     
     [Header("Sounds")]
     public AudioSource characterPreviewOnOnClickSound;
@@ -84,11 +89,18 @@ public class CharacterPreview : MonoBehaviour
         _highlightTrigger.enabled = true;
         _triggerHighlightEffect.profile = triggerHighlightProfile;
         _triggerHighlightEffect.ProfileReload();
+        
+        if(!_characterPreview)
+            Cursor.SetCursor(characterPreviewHoverCursor, Vector2.zero, CursorMode.Auto);
+        else
+            Cursor.SetCursor(characterPreviewHoverExitCursor, Vector2.zero, CursorMode.Auto);
     }
 
     // handle highlighting the characters when we don't hover over the characters anymore
     private void OnMouseExit()
     {
+        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+        
         characterPreviewHoverExitSound.Play();
         
         _highlightTrigger.enabled = false;

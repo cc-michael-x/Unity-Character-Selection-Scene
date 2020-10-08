@@ -13,10 +13,14 @@ public class GameManager : MonoBehaviour
     public GameObject characters;
     public GameObject[] _characters;
 
+    public Texture2D defaultCursor;
+    
     private void Start()
     {
         Instance = this;
 
+        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+        
         _characters = new GameObject[characters.transform.childCount];
         for (int i = 0; i < characters.transform.childCount; i++)
         {
