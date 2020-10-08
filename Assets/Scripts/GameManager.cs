@@ -21,8 +21,10 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
 
+        // set default cursor
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
         
+        // dynamically fetch character list from parent character game object
         charactersArray = new GameObject[characters.transform.childCount];
         for (var i = 0; i < characters.transform.childCount; i++)
         {
@@ -41,14 +43,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // stop showing move camera tooltip
         if(Input.GetMouseButton(1))
             moveCameraMouseTipCanvas.SetActive(false);
     }
 
+    // disable all other character preview components that isn't the currently selected character preview
     public void SetCurrentCharacterPreview(string characterName)
     {
         GameObject[] nonSelectedCharacterPreviews = 
-            charactersArray.Where(character => character.GetComponent<CharacterPreview>().characterName != characterName).ToArray();
+            charactersArray.Where(character => 
+                character.GetComponent<CharacterPreview>().characterName != characterName).ToArray();
 
         foreach (var nonSelectedCharacterPreview in nonSelectedCharacterPreviews)
         {
