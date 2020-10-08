@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private const string CharacterPreviewComponents = "CharacterPreviewComponents";
     public static GameManager Instance;
 
+    public string currentCharacterSelected;
     public GameObject characters;
     public GameObject[] charactersArray;
 
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour
     // disable all other character preview components that isn't the currently selected character preview
     public void SetCurrentCharacterPreview(string characterName)
     {
+        if (!characterName.IsNullOrEmpty())
+            currentCharacterSelected = characterName;
+        
         GameObject[] nonSelectedCharacterPreviews = 
             charactersArray.Where(character => 
                 character.GetComponent<CharacterPreview>().characterName != characterName).ToArray();

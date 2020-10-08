@@ -1,13 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterPreviewSelectButtonHandler : MonoBehaviour
 {
-    public GameObject parentCanvas;
-    
+    private AudioSource _buttonClick;
+
+    private void Start()
+    {
+        _buttonClick = gameObject.GetComponent<AudioSource>();
+    }
+
     public void OnCharacterPreviewSelectButton()
     {
-        Debug.Log(parentCanvas.transform.parent.gameObject.name);
+        _buttonClick.Play();
     }
 }

@@ -16,6 +16,7 @@ public class CharacterPreview : MonoBehaviour
     public string characterNameDescriptionText;
     public GameObject characterPreviewCanvas;
     public GameObject characterDescriptionParent;
+    private Animator _characterPreviewAnimator;
     
     [Header("Character Description Components")]
     private TextMeshProUGUI _characterNameText;
@@ -51,6 +52,7 @@ public class CharacterPreview : MonoBehaviour
     private CharacterHeadLookAtCamera _characterHeadLookAtCamera;
     private Animator _animator;
     private static readonly int Preview = Animator.StringToHash("CharacterPreview");
+    private static readonly int Play = Animator.StringToHash("Play");
 
     private void Start()
     {
@@ -72,7 +74,8 @@ public class CharacterPreview : MonoBehaviour
         characterName = transform.parent.gameObject.name;
         _characterNameText.text = characterName;
         _characterNameDescription.text = characterNameDescriptionText;
-        
+        _characterPreviewAnimator = characterPreviewCanvas.GetComponent<Animator>();
+            
         _characterHeadLookAtCamera = gameObject.GetComponent<CharacterHeadLookAtCamera>();
         _animator = gameObject.GetComponent<Animator>();
         _cmDefaultFreeLook = defaultCmFreeLookCam.GetComponent<CinemachineFreeLook>();
@@ -162,7 +165,8 @@ public class CharacterPreview : MonoBehaviour
             // enable the free look vcam for this character
             _cmCharacterFreeLook.enabled = true;
             
-            characterPreviewCanvas.SetActive(true);
+            _characterPreviewAnimator.SetBool(Preview, true);
+            _characterPreviewAnimator.SetBool(Play, true);
         }
         else
         {
@@ -183,7 +187,8 @@ public class CharacterPreview : MonoBehaviour
             // disable the free look vcam for this character
             _cmCharacterFreeLook.enabled = false;
             
-            characterPreviewCanvas.SetActive(false);
+            _characterPreviewAnimator.SetBool(Preview, false);
+            _characterPreviewAnimator.SetBool(Play, true);
         }
     }
 
