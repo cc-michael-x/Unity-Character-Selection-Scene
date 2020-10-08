@@ -78,14 +78,26 @@ public class CharacterPreview : MonoBehaviour
         _cmCharacterFreeLook = characterCmFreeLookCam.GetComponent<CinemachineFreeLook>();
     }
 
+    // the mouse state is locked when the user is moving the camera while holding down the right mouse button
+    private bool IsTheMouseStateLocked()
+    {
+        return Cursor.lockState == CursorLockMode.Locked;
+    }
+    
     private void OnMouseEnter()
     {
+        if (IsTheMouseStateLocked())
+            return;
+        
         characterPreviewHoverEnterSound.Play();
     }
 
     // handle highlighting the characters when we hover over the characters anymore
     private void OnMouseOver()
     {
+        if (IsTheMouseStateLocked())
+            return;
+        
         _highlightTrigger.enabled = true;
         _triggerHighlightEffect.profile = triggerHighlightProfile;
         _triggerHighlightEffect.ProfileReload();
@@ -99,6 +111,9 @@ public class CharacterPreview : MonoBehaviour
     // handle highlighting the characters when we don't hover over the characters anymore
     private void OnMouseExit()
     {
+        if (IsTheMouseStateLocked())
+            return;
+        
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
         
         characterPreviewHoverExitSound.Play();
@@ -111,6 +126,9 @@ public class CharacterPreview : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (IsTheMouseStateLocked())
+            return;
+        
         if (!enabled)
             return;
         
