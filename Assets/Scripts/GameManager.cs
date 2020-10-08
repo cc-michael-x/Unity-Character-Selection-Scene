@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour
         // stop showing move camera tooltip
         if(Input.GetMouseButton(1))
             moveCameraMouseTipCanvas.SetActive(false);
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
     }
 
     // disable all other character preview components that isn't the currently selected character preview
