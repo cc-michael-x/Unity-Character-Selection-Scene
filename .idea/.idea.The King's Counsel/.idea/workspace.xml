@@ -20,6 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a0c28f0-f02d-473c-8c87-42de10469498" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/CharacterPreviewAnimatorHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CharacterPreviewAnimatorHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/CharacterPreviewCanvas.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animators/CharacterPreviewCanvas.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +48,8 @@
         <option value="$PROJECT_DIR$/Assets/HighlightPlus/Scripts/HighlightEffect.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CmFreelookOnlyWhenRightMouseDown.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreviewSelectButtonHandler.cs" />
-        <option value="$PROJECT_DIR$/Assets/CharacterPreviewAnimatorHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/CharacterPreviewAnimatorHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" />
       </list>
     </option>
@@ -101,7 +104,7 @@
       <workItem from="1602010058331" duration="659000" />
       <workItem from="1602013372624" duration="15796000" />
       <workItem from="1602077609992" duration="7168000" />
-      <workItem from="1602165238901" duration="14900000" />
+      <workItem from="1602165238901" duration="16541000" />
     </task>
     <servers />
   </component>

@@ -5,16 +5,38 @@ using UnityEngine;
 public class CharacterPreviewAnimatorHandler : StateMachineBehaviour
 {
     private static readonly string gameManager = "GameManager";
+    private static readonly string characterPreviewComponents = "CharacterPreviewComponents";
     private static readonly string characterPreviewCanvas = "CharacterPreviewCanvas";
     private static readonly int Play = Animator.StringToHash("Play");
     private static readonly int CharacterPreview = Animator.StringToHash("CharacterPreview");
     private GameObject _characterPreviewParentCanvas;
     private RectTransform _subCanvasScale;
+    private CharacterPreview _characterPreviewClass;
 
-    // override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    // {
-    //
-    // }
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        /*if (animator.GetBool(CharacterPreview))
+            return;*/
+        
+        string currentCharacterSelected = GameObject.Find(gameManager).GetComponent<GameManager>().currentCharacterSelected;
+        GameObject currentCharacterObject = GameObject.Find(currentCharacterSelected);
+
+        if (currentCharacterObject == null)
+            return;
+        
+        // sift through a list of child objects to find the specific one
+        for (var i = 0; i < currentCharacterObject.transform.childCount; i++)
+        {
+            // object is not what we're looking for
+            if (currentCharacterObject.transform.GetChild(i).gameObject.name !=
+                characterPreviewComponents) continue;
+        
+            // found the game object we're looking for
+            _characterPreviewClass = currentCharacterObject.transform.GetChild(i).gameObject.GetComponent<CharacterPreview>();
+        }
+        
+        _characterPreviewClass.BlockSelect();
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -48,8 +70,6 @@ public class CharacterPreviewAnimatorHandler : StateMachineBehaviour
         }
         else
             _subCanvasScale.localScale = new Vector3(0, 0, 0);
-        
-        Debug.Log(_subCanvasScale.gameObject.name + ": " + currentCharacterSelected + " "  + _subCanvasScale.localScale);
         
         // reset the play to false to not play animations on loop 
         _characterPreviewParentCanvas.GetComponent<Animator>().SetBool(Play, false);

@@ -45,7 +45,9 @@ public class CharacterPreview : MonoBehaviour
     public AudioSource bookSound;
     public AudioSource characterPreviewHoverEnterSound;
     public AudioSource characterPreviewHoverExitSound;
-    
+
+    private bool _blockSelect;
+    private float _blockSelectTime = 0f;
     private bool _characterPreview;
     private CinemachineFreeLook _cmDefaultFreeLook;
     private CinemachineVirtualCamera _cmCharacterFreeLook;
@@ -53,6 +55,7 @@ public class CharacterPreview : MonoBehaviour
     private Animator _animator;
     private static readonly int Preview = Animator.StringToHash("CharacterPreview");
     private static readonly int Play = Animator.StringToHash("Play");
+    private const float _blockSelectTimeConst = 2f;
 
     private void Start()
     {
@@ -60,11 +63,7 @@ public class CharacterPreview : MonoBehaviour
         _triggerHighlightEffect = gameObject.GetComponent<HighlightEffect>();
         _highlightTrigger = gameObject.GetComponent<HighlightTrigger>();
         
-        // handle initial highlight characters setup
-        _triggerHighlightEffect.profile = glowingHighlightProfile;
-        _triggerHighlightEffect.ProfileReload();
-        _triggerHighlightEffect.highlighted = true;
-        _highlightTrigger.enabled = false;
+        NonTriggerCharacterPreviewGlowingEffect();
         
         // get TextMeshProUGUI character description objects
         _characterNameText = FindGameObjectInChildren(characterDescriptionParent, CharacterNameTextObjectName);
@@ -92,7 +91,14 @@ public class CharacterPreview : MonoBehaviour
             if(_characterPreview)
                 LeaveCharacterPreview();
         }
-            
+        
+        // Wait until waitTime is below or equal to zero.
+        if(_blockSelectTime > 0) {
+            _blockSelectTime -= Time.deltaTime;
+        } else {
+            // Done.
+            _blockSelect = false;
+        }
     }
 
     // the mouse state is locked when the user is moving the camera while holding down the right mouse button
@@ -103,9 +109,6 @@ public class CharacterPreview : MonoBehaviour
     
     private void OnMouseEnter()
     {
-        /*if (EventSystem.current.IsPointerOverGameObject())
-            return;*/
-        
         if (IsTheMouseStateLocked())
             return;
         
@@ -120,11 +123,13 @@ public class CharacterPreview : MonoBehaviour
         
         if (IsTheMouseStateLocked())
             return;
+
+        if (_blockSelect)
+            return;
         
-        _highlightTrigger.enabled = true;
-        _triggerHighlightEffect.profile = triggerHighlightProfile;
-        _triggerHighlightEffect.ProfileReload();
-        
+        // enable highlight trigger
+        EnableTriggerCharacterPreviewHighlight();
+
         if(!_characterPreview)
             Cursor.SetCursor(characterPreviewHoverCursor, Vector2.zero, CursorMode.Auto);
         else
@@ -140,24 +145,21 @@ public class CharacterPreview : MonoBehaviour
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
         
         characterPreviewHoverExitSound.Play();
-        
-        _highlightTrigger.enabled = false;
-        _triggerHighlightEffect.profile = glowingHighlightProfile;
-        _triggerHighlightEffect.ProfileReload();
-        _triggerHighlightEffect.highlighted = true;
+
+        NonTriggerCharacterPreviewGlowingEffect();
     }
 
     void OnMouseDown()
     {
         if (!enabled)
             return;
+
+        if (_blockSelect)
+            return;
         
         if (IsTheMouseStateLocked())
             return;
 
-        /*if (EventSystem.current.IsPointerOverGameObject())
-            return;*/
-        
         if (!_characterPreview)
         {
             // set this character as the current character preview
@@ -208,6 +210,29 @@ public class CharacterPreview : MonoBehaviour
 
         _characterPreviewAnimator.SetBool(Preview, false);
         _characterPreviewAnimator.SetBool(Play, true);
+    }
+
+    public void BlockSelect()
+    {
+        _blockSelect = true; // block the input
+        _blockSelectTime = _blockSelectTimeConst;
+        NonTriggerCharacterPreviewGlowingEffect();
+    }
+
+    private void EnableTriggerCharacterPreviewHighlight()
+    {
+        _highlightTrigger.enabled = true;
+        _triggerHighlightEffect.profile = triggerHighlightProfile;
+        _triggerHighlightEffect.ProfileReload();
+    }
+    
+    private void NonTriggerCharacterPreviewGlowingEffect()
+    {
+        // handle initial highlight characters setup
+        _triggerHighlightEffect.profile = glowingHighlightProfile;
+        _triggerHighlightEffect.ProfileReload();
+        _triggerHighlightEffect.highlighted = true;
+        _highlightTrigger.enabled = false;
     }
 
     // return a TextMeshProUGUI GameObject that was found in the list of child objects in parent object
