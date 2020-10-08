@@ -47,7 +47,7 @@ public class CharacterPreview : MonoBehaviour
     
     private bool _characterPreview;
     private CinemachineFreeLook _cmDefaultFreeLook;
-    private CinemachineFreeLook _cmCharacterFreeLook;
+    private CinemachineVirtualCamera _cmCharacterFreeLook;
     private CharacterHeadLookAtCamera _characterHeadLookAtCamera;
     private Animator _animator;
     private static readonly int Preview = Animator.StringToHash("CharacterPreview");
@@ -76,7 +76,7 @@ public class CharacterPreview : MonoBehaviour
         _characterHeadLookAtCamera = gameObject.GetComponent<CharacterHeadLookAtCamera>();
         _animator = gameObject.GetComponent<Animator>();
         _cmDefaultFreeLook = defaultCmFreeLookCam.GetComponent<CinemachineFreeLook>();
-        _cmCharacterFreeLook = characterCmFreeLookCam.GetComponent<CinemachineFreeLook>();
+        _cmCharacterFreeLook = characterCmFreeLookCam.GetComponent<CinemachineVirtualCamera>();
     }
 
     // the mouse state is locked when the user is moving the camera while holding down the right mouse button
@@ -87,6 +87,9 @@ public class CharacterPreview : MonoBehaviour
     
     private void OnMouseEnter()
     {
+        /*if (EventSystem.current.IsPointerOverGameObject())
+            return;*/
+        
         if (IsTheMouseStateLocked())
             return;
         
@@ -96,6 +99,9 @@ public class CharacterPreview : MonoBehaviour
     // handle highlighting the characters when we hover over the characters anymore
     private void OnMouseOver()
     {
+        /*if (EventSystem.current.IsPointerOverGameObject())
+            return;*/
+        
         if (IsTheMouseStateLocked())
             return;
         
@@ -133,8 +139,8 @@ public class CharacterPreview : MonoBehaviour
         if (IsTheMouseStateLocked())
             return;
 
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+        /*if (EventSystem.current.IsPointerOverGameObject())
+            return;*/
         
         if (!_characterPreview)
         {
