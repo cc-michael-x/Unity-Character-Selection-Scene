@@ -165,26 +165,7 @@ public class CharacterPreview : MonoBehaviour
 
         if (!_characterPreview)
         {
-            // set this character as the current character preview
-            GameManager.Instance.SetCurrentCharacterPreview(characterName);
-            
-            // character preview is now ON for this character
-            _characterPreview = true;
-            
-            // play on select click sound
-            characterPreviewOnOnClickSound.Play();
-            bookSound.Play();
-
-            // enable the free look vcam for this character
-            _characterHeadLookAtCamera.enabled = true;
-
-            // disable the default free look vcam
-            _cmDefaultFreeLook.enabled = false;
-            // enable the free look vcam for this character
-            _cmCharacterFreeLook.enabled = true;
-            
-            _characterPreviewAnimator.SetBool(Preview, true);
-            _characterPreviewAnimator.SetBool(Play, true);
+            EnterCharacterPreview();
         }
         else
         {
@@ -192,6 +173,30 @@ public class CharacterPreview : MonoBehaviour
         }
     }
 
+    private void EnterCharacterPreview()
+    {
+        // set this character as the current character preview
+        GameManager.Instance.SetCurrentCharacterPreview(characterName);
+            
+        // character preview is now ON for this character
+        _characterPreview = true;
+            
+        // play on select click sound
+        characterPreviewOnOnClickSound.Play();
+        bookSound.Play();
+
+        // enable the free look vcam for this character
+        _characterHeadLookAtCamera.enabled = true;
+
+        // disable the default free look vcam
+        _cmDefaultFreeLook.enabled = false;
+        // enable the free look vcam for this character
+        _cmCharacterFreeLook.enabled = true;
+            
+        _characterPreviewAnimator.SetBool(Preview, true);
+        _characterPreviewAnimator.SetBool(Play, true);
+    }
+    
     private void LeaveCharacterPreview()
     {
         // deselect this character as the current character preview

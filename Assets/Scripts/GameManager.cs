@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         if(Input.GetMouseButton(1))
             moveCameraMouseTipCanvas.SetActive(false);
 
+        // show the cursor when the user releases the right mouse button
         if (Input.GetMouseButtonUp(1))
         {
             Cursor.visible = true;
