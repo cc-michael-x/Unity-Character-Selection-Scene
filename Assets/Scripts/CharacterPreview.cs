@@ -83,15 +83,18 @@ public class CharacterPreview : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey("escape"))
+        if (!_blockSelect)
         {
-            if (!enabled)
-                return;
-            
-            if(_characterPreview)
-                LeaveCharacterPreview();
+            if (Input.GetKey("escape"))
+            {
+                if (!enabled)
+                    return;
+
+                if (_characterPreview)
+                    LeaveCharacterPreview();
+            }
         }
-        
+
         // Wait until waitTime is below or equal to zero.
         if(_blockSelectTime > 0) {
             _blockSelectTime -= Time.deltaTime;
