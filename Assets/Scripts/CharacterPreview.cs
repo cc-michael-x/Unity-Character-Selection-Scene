@@ -83,9 +83,12 @@ public class CharacterPreview : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.IsItCharacterPreviewPhase())
+            enabled = false;
+
         if (!_blockSelect)
         {
-            if (Input.GetKey("escape"))
+            if (GameManager.Instance.IsItCharacterPreviewPhase() && Input.GetKey("escape"))
             {
                 if (!enabled)
                     return;
@@ -216,6 +219,21 @@ public class CharacterPreview : MonoBehaviour
         // disable the free look vcam for this character
         _cmCharacterFreeLook.enabled = false;
 
+        _characterPreviewAnimator.SetBool(Preview, false);
+        _characterPreviewAnimator.SetBool(Play, true);
+    }
+
+    public void StopShowingCharacterDescription()
+    {
+        // character preview is now OFF for this character
+        _characterPreview = false;
+        
+        // disable the free look vcam for this character
+        _characterHeadLookAtCamera.enabled = false;
+        
+        // disable freelook cam for character
+        _cmCharacterFreeLook.enabled = false;
+        
         _characterPreviewAnimator.SetBool(Preview, false);
         _characterPreviewAnimator.SetBool(Play, true);
     }

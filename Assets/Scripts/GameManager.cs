@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
 using UnityEngine;
 using WebSocketSharp;
 
@@ -10,18 +11,40 @@ public class GameManager : MonoBehaviour
     private const string CharacterPreviewComponents = "CharacterPreviewComponents";
     public static GameManager Instance;
 
+    [Header("Phases")] 
+    private bool _characterSelectionPhase;
+    private bool _prepareCounselPhase;
+    
+    [Header("Cameras")]
+    public GameObject defaultFreeLookCam;
+    public GameObject theKingsCounselVCam;
+    private CinemachineFreeLook _defaultCmFreeLookCam;
+    private CinemachineVirtualCamera _kingsCounselVCam;
+    
+    [Header("Characters")]
     public string currentCharacterSelected;
     public GameObject characters;
     public GameObject[] charactersArray;
 
+    [Header("UI Config")]
     public Texture2D defaultCursor;
-
     public GameObject moveCameraMouseTipCanvas;
-    
+
     private void Start()
     {
         Instance = this;
 
+        // start with character selection phase
+        _characterSelectionPhase = true;
+        
+        // enable main lobby free look cam
+        _defaultCmFreeLookCam = defaultFreeLookCam.GetComponent<CinemachineFreeLook>();
+        _defaultCmFreeLookCam.enabled = true;
+        
+        // disable vcam prepare counsel room camera
+        _kingsCounselVCam = theKingsCounselVCam.GetComponent<CinemachineVirtualCamera>();
+        _kingsCounselVCam.enabled = false;
+        
         // set default cursor
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
         
@@ -54,8 +77,22 @@ public class GameManager : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
         }
+        
+        if (_prepareCounselPhase && Input.GetKey("escape"))
+        {
+            _prepareCounselPhase = false;
+            _characterSelectionPhase = true;
+
+            _kingsCounselVCam.enabled = false;
+            _defaultCmFreeLookCam.enabled = true;
+        }
     }
 
+    public bool IsItCharacterPreviewPhase()
+    {
+        return _characterSelectionPhase;
+    }
+    
     // disable all other character preview components that isn't the currently selected character preview
     public void SetCurrentCharacterPreview(string characterName)
     {
@@ -70,5 +107,19 @@ public class GameManager : MonoBehaviour
         {
             nonSelectedCharacterPreview.GetComponent<CharacterPreview>().enabled = characterName.IsNullOrEmpty();
         }
+    }
+
+    public void PrepareARoomForTheKingsCounsel()
+    {
+        _characterSelectionPhase = false;
+        _prepareCounselPhase = true;
+        theKingsCounselVCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+    }
+
+    public void QuitPreparingARoomForTheKingsCounsel()
+    {
+        _characterSelectionPhase = true;
+        _prepareCounselPhase = false;
+        theKingsCounselVCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
     }
 } 

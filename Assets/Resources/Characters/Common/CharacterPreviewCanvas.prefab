@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &5141512259380540633
 MonoBehaviour:
@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a00291095f27e9499f746c325c12c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentCharacterPreviewCanvas: {fileID: 5141512259380540634}
 --- !u!223 &225510716829782890
 Canvas:
   m_ObjectHideFlags: 0
