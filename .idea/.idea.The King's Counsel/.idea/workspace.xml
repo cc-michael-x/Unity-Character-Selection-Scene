@@ -22,9 +22,9 @@
     <list default="true" id="9a0c28f0-f02d-473c-8c87-42de10469498" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CharacterPreviewAnimatorHandler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CharacterPreviewAnimatorHandler.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InitialMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InitialMenuManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MenuManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +39,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94777608-5C2A-45BE-BC6A-FA3092A3F6ED/3d/9070d510/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/27/81e33fc2/Cursor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/PlayMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -53,7 +54,9 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreview.cs" />
         <option value="$PROJECT_DIR$/Assets/CharacterPreviewAnimatorHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/MenuSoundButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/InitialMenuManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/PlayMenuManager.cs" />
       </list>
     </option>
   </component>
@@ -108,7 +111,8 @@
       <workItem from="1602013372624" duration="15796000" />
       <workItem from="1602077609992" duration="7168000" />
       <workItem from="1602165238901" duration="20675000" />
-      <workItem from="1602250803567" duration="5320000" />
+      <workItem from="1602250803567" duration="7129000" />
+      <workItem from="1602270581323" duration="2260000" />
     </task>
     <servers />
   </component>

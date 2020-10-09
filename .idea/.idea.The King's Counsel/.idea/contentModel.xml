@@ -428,6 +428,7 @@
             </e>
           </e>
         </e>
+        <e p="PlayMenuManager.cs" t="Include" />
         <e p="PolygonFantasyHeroCharacters" t="Include">
           <e p="Scripts" t="Include">
             <e p="CharacterRandomizer.cs" t="Include" />
