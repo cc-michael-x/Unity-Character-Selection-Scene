@@ -80,11 +80,7 @@ public class GameManager : MonoBehaviour
         
         if (_prepareCounselPhase && Input.GetKey("escape"))
         {
-            _prepareCounselPhase = false;
-            _characterSelectionPhase = true;
-
-            _kingsCounselVCam.enabled = false;
-            _defaultCmFreeLookCam.enabled = true;
+            QuitPreparingARoomForTheKingsCounsel();
         }
     }
 
@@ -116,10 +112,20 @@ public class GameManager : MonoBehaviour
         theKingsCounselVCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
     }
 
-    public void QuitPreparingARoomForTheKingsCounsel()
+    private void QuitPreparingARoomForTheKingsCounsel()
     {
-        _characterSelectionPhase = true;
         _prepareCounselPhase = false;
-        theKingsCounselVCam.GetComponent<CinemachineVirtualCamera>().enabled = false;
+        _characterSelectionPhase = true;
+
+        _kingsCounselVCam.enabled = false;
+
+        // get the character that was selected before entering the prepare phase
+        GameObject characterThatWasSelected = charactersArray.First(character =>
+            character.transform.parent.gameObject.name == currentCharacterSelected);
+            
+        CharacterPreview characterPreview = characterThatWasSelected.GetComponent<CharacterPreview>();
+            
+        characterPreview.enabled = true;
+        characterPreview.EnterCharacterPreview();
     }
 } 

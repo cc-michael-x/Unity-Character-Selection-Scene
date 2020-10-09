@@ -88,7 +88,7 @@ public class CharacterPreview : MonoBehaviour
 
         if (!_blockSelect)
         {
-            if (GameManager.Instance.IsItCharacterPreviewPhase() && Input.GetKey("escape"))
+            if (Input.GetKey("escape"))
             {
                 if (!enabled)
                     return;
@@ -115,8 +115,7 @@ public class CharacterPreview : MonoBehaviour
     
     private void OnMouseEnter()
     {
-        if (IsTheMouseStateLocked())
-            return;
+        if (!CheckIfCharacterPreviewIsAllowed()) return;
         
         characterPreviewHoverEnterSound.Play();
     }
@@ -124,15 +123,8 @@ public class CharacterPreview : MonoBehaviour
     // handle highlighting the characters when we hover over the characters anymore
     private void OnMouseOver()
     {
-        /*if (EventSystem.current.IsPointerOverGameObject())
-            return;*/
-        
-        if (IsTheMouseStateLocked())
-            return;
+        if (!CheckIfCharacterPreviewIsAllowed()) return;
 
-        if (_blockSelect)
-            return;
-        
         // enable highlight trigger
         EnableTriggerCharacterPreviewHighlight();
 
@@ -145,8 +137,7 @@ public class CharacterPreview : MonoBehaviour
     // handle highlighting the characters when we don't hover over the characters anymore
     private void OnMouseExit()
     {
-        if (IsTheMouseStateLocked())
-            return;
+        if (!CheckIfCharacterPreviewIsAllowed()) return;
         
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
         
@@ -157,14 +148,7 @@ public class CharacterPreview : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!enabled)
-            return;
-
-        if (_blockSelect)
-            return;
-        
-        if (IsTheMouseStateLocked())
-            return;
+        if (!CheckIfCharacterPreviewIsAllowed()) return;
 
         if (!_characterPreview)
         {
@@ -176,7 +160,21 @@ public class CharacterPreview : MonoBehaviour
         }
     }
 
-    private void EnterCharacterPreview()
+    private bool CheckIfCharacterPreviewIsAllowed()
+    {
+        if (!enabled)
+            return false;
+
+        if (_blockSelect)
+            return false;
+
+        if (IsTheMouseStateLocked())
+            return false;
+        
+        return true;
+    }
+
+    public void EnterCharacterPreview()
     {
         // set this character as the current character preview
         GameManager.Instance.SetCurrentCharacterPreview(characterName);
@@ -200,7 +198,7 @@ public class CharacterPreview : MonoBehaviour
         _characterPreviewAnimator.SetBool(Play, true);
     }
     
-    private void LeaveCharacterPreview()
+    public void LeaveCharacterPreview()
     {
         // deselect this character as the current character preview
         GameManager.Instance.SetCurrentCharacterPreview("");
