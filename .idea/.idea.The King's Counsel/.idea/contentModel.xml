@@ -428,7 +428,6 @@
             </e>
           </e>
         </e>
-        <e p="PlayMenuManager.cs" t="Include" />
         <e p="PolygonFantasyHeroCharacters" t="Include">
           <e p="Scripts" t="Include">
             <e p="CharacterRandomizer.cs" t="Include" />
@@ -438,15 +437,23 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="CharacterHeadLookAtCamera.cs" t="Include" />
-          <e p="CharacterPreview.cs" t="Include" />
-          <e p="CharacterPreviewAnimatorHandler.cs" t="Include" />
-          <e p="CharacterPreviewSelectButtonHandler.cs" t="Include" />
-          <e p="CMFreelookOnlyWhenRightMouseDown.cs" t="Include" />
-          <e p="GameManager.cs" t="Include" />
-          <e p="InitialMenuManager.cs" t="Include" />
-          <e p="MenuManager.cs" t="Include" />
-          <e p="MenuSoundButton.cs" t="Include" />
+          <e p="Menu" t="Include">
+            <e p="CreateGameMenuManager.cs" t="Include" />
+            <e p="FindGameMenuManager.cs" t="Include" />
+            <e p="InitialMenuManager.cs" t="Include" />
+            <e p="MenuManager.cs" t="Include" />
+            <e p="MenuSoundButton.cs" t="Include" />
+            <e p="PlayMenuManager.cs" t="Include" />
+            <e p="PrivateGameMenuManager.cs" t="Include" />
+          </e>
+          <e p="PrepareCounsel" t="Include">
+            <e p="CharacterHeadLookAtCamera.cs" t="Include" />
+            <e p="CharacterPreview.cs" t="Include" />
+            <e p="CharacterPreviewAnimatorHandler.cs" t="Include" />
+            <e p="CharacterPreviewSelectButtonHandler.cs" t="Include" />
+            <e p="CMFreelookOnlyWhenRightMouseDown.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
+          </e>
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
