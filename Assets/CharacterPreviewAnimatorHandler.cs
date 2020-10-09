@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CharacterPreviewAnimatorHandler : StateMachineBehaviour
 {
-    private static readonly string gameManager = "GameManager";
-    private static readonly string characterPreviewComponents = "CharacterPreviewComponents";
-    private static readonly string characterPreviewCanvas = "CharacterPreviewCanvas";
+    private static readonly string _gameManager = "GameManager";
+    private static readonly string _characterPreviewComponents = "CharacterPreviewComponents";
+    private static readonly string _characterPreviewCanvas = "CharacterPreviewCanvas";
     private static readonly int Play = Animator.StringToHash("Play");
     private static readonly int CharacterPreview = Animator.StringToHash("CharacterPreview");
     private GameObject _characterPreviewParentCanvas;
@@ -15,10 +15,16 @@ public class CharacterPreviewAnimatorHandler : StateMachineBehaviour
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        /*if (animator.GetBool(CharacterPreview))
-            return;*/
+        GameObject gameManager = GameObject.Find(_gameManager);
+        if (gameManager == null)
+            return;
+
+        GameManager gameManagerScript = gameManager.GetComponent<GameManager>();
+        if (gameManagerScript == null)
+            return;
         
-        string currentCharacterSelected = GameObject.Find(gameManager).GetComponent<GameManager>().currentCharacterSelected;
+        string currentCharacterSelected = gameManagerScript.currentCharacterSelected;
+
         GameObject currentCharacterObject = GameObject.Find(currentCharacterSelected);
 
         if (currentCharacterObject == null)
@@ -29,7 +35,7 @@ public class CharacterPreviewAnimatorHandler : StateMachineBehaviour
         {
             // object is not what we're looking for
             if (currentCharacterObject.transform.GetChild(i).gameObject.name !=
-                characterPreviewComponents) continue;
+                _characterPreviewComponents) continue;
         
             // found the game object we're looking for
             _characterPreviewClass = currentCharacterObject.transform.GetChild(i).gameObject.GetComponent<CharacterPreview>();
@@ -46,7 +52,16 @@ public class CharacterPreviewAnimatorHandler : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        string currentCharacterSelected = GameObject.Find(gameManager).GetComponent<GameManager>().currentCharacterSelected;
+        GameObject gameManager = GameObject.Find(_gameManager);
+        if (_gameManager == null)
+            return;
+        
+        GameManager gameManagerScript = gameManager.GetComponent<GameManager>();
+        if (gameManagerScript == null)
+            return;
+        
+        string currentCharacterSelected = gameManagerScript.currentCharacterSelected;
+        
         GameObject currentCharacterObject = GameObject.Find(currentCharacterSelected);
         
         // sift through a list of child objects to find the specific one
@@ -54,7 +69,7 @@ public class CharacterPreviewAnimatorHandler : StateMachineBehaviour
         {
             // object is not what we're looking for
             if (currentCharacterObject.transform.GetChild(i).gameObject.name !=
-                characterPreviewCanvas) continue;
+                _characterPreviewCanvas) continue;
         
             // found the game object we're looking for
             _characterPreviewParentCanvas = currentCharacterObject.transform.GetChild(i).gameObject;
