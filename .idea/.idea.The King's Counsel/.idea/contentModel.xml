@@ -8,7 +8,6 @@
         <e p="25 cards" t="Include">
           <e p="readme.txt" t="Include" />
         </e>
-        <e p="CharacterPreviewManager.cs" t="Include" />
         <e p="HighlightPlus" t="Include">
           <e p="Demo" t="Include">
             <e p="Scripts" t="Include">
@@ -438,6 +437,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="CharacterPreviewManager.cs" t="Include" />
           <e p="Menu" t="Include">
             <e p="CreateGameMenuManager.cs" t="Include" />
             <e p="FindGameMenuManager.cs" t="Include" />
