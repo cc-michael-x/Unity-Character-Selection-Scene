@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using WebSocketSharp;
 
 public class GameManager : MonoBehaviour
@@ -12,14 +13,15 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Header("Phases")] 
-    private bool _characterSelectionPhase;
-    private bool _prepareCounselPhase;
+    public bool _characterSelectionPhase;
+    public bool _prepareCounselPhase;
+    public bool _prepareCounselUIOpened;
     
     [Header("Cameras")]
-    public GameObject defaultFreeLookCam;
-    public GameObject theKingsCounselVCam;
-    private CinemachineFreeLook _defaultCmFreeLookCam;
-    private CinemachineVirtualCamera _kingsCounselVCam;
+    public CinemachineVirtualCamera initialMenuSetupVirtualCamera;
+    public CinemachineVirtualCamera followUpMenuVirtualCamera;
+    public CinemachineFreeLook defaultCmFreeLookCam;
+    public CinemachineVirtualCamera kingsCounselVCam;
     
     [Header("Characters")]
     public string currentCharacterSelected;
@@ -27,23 +29,43 @@ public class GameManager : MonoBehaviour
     public GameObject[] charactersArray;
 
     [Header("UI Config")]
+    public GameObject fadeInImage;
+    public GameObject fadeOutImage;
+    private bool _fadingInImage;
+    private float _fadingInImageTime = 1f;
+    private bool _fadingOutImage;
+    private float _fadingOutImageTime = 2f;
+    private float _initialMenuSetupVirtualCameraTime = 3f;
     public Texture2D defaultCursor;
     public GameObject moveCameraMouseTipCanvas;
+    public GameObject prepareCounselUI;
 
+    [Header("Music")] 
+    public AudioSource mainMusic;
+    public AudioSource menuSoundButton;
+    
+    [Header("Animators")]
+    public Animator theDoorsAnimator;
+    private static readonly int StartDoorAnimation = Animator.StringToHash("StartDoorAnimation");
+    
     private void Start()
     {
         Instance = this;
 
+        // fade into scene
+        EnterPrepareCounselScene();
+        
         // start with character selection phase
         _characterSelectionPhase = true;
         
         // enable main lobby free look cam
-        _defaultCmFreeLookCam = defaultFreeLookCam.GetComponent<CinemachineFreeLook>();
-        _defaultCmFreeLookCam.enabled = true;
+        defaultCmFreeLookCam.enabled = true;
         
         // disable vcam prepare counsel room camera
-        _kingsCounselVCam = theKingsCounselVCam.GetComponent<CinemachineVirtualCamera>();
-        _kingsCounselVCam.enabled = false;
+        kingsCounselVCam.enabled = false;
+        
+        // dont show canvas by default
+        prepareCounselUI.SetActive(false);
         
         // set default cursor
         Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
@@ -67,6 +89,41 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (_fadingInImage)
+        {
+            _fadingInImageTime -= Time.deltaTime;
+            if (_fadingInImageTime <= 0)
+            {
+                fadeInImage.SetActive(false);
+                _fadingInImage = false;
+            }
+        }
+        
+        if (_fadingOutImage)
+        {
+            _initialMenuSetupVirtualCameraTime -= Time.deltaTime;
+
+            if (_initialMenuSetupVirtualCameraTime <= 0.5f)
+            {
+                initialMenuSetupVirtualCamera.enabled = false;
+                followUpMenuVirtualCamera.enabled = true;
+            }
+
+            if (_initialMenuSetupVirtualCameraTime <= 0)
+            {
+                _fadingOutImageTime -= Time.deltaTime;
+                mainMusic.volume -= Time.deltaTime / 10;
+
+                StartAnimationLeaveToMenuScene();
+                    
+                if (_fadingOutImageTime <= 0)
+                {
+                    SceneManager.LoadScene("Menu");
+                    _fadingOutImage = false;
+                }
+            }
+        }
+        
         // stop showing move camera tooltip
         if(Input.GetMouseButton(1))
             moveCameraMouseTipCanvas.SetActive(false);
@@ -78,12 +135,38 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
         }
         
-        if (_prepareCounselPhase && Input.GetKey("escape"))
+        if (Input.GetKeyDown("escape"))
         {
-            QuitPreparingARoomForTheKingsCounsel();
+            if (_prepareCounselPhase)
+            {
+                QuitPreparingARoomForTheKingsCounsel();
+                _prepareCounselPhase = false;
+                _characterSelectionPhase = true;
+                _prepareCounselUIOpened = false;
+            }
+            else if (_characterSelectionPhase)
+            {
+                prepareCounselUI.SetActive(true);
+                _prepareCounselPhase = false;
+                _characterSelectionPhase = false;
+                _prepareCounselUIOpened = true;
+            }
+            else if (_prepareCounselUIOpened)
+            {
+                prepareCounselUI.SetActive(false);
+                _prepareCounselPhase = false;
+                _characterSelectionPhase = true;
+                _prepareCounselUIOpened = false;
+            }
         }
     }
 
+    private void EnterPrepareCounselScene()
+    {
+        _fadingInImage = true;
+        fadeInImage.SetActive(true);
+    }
+    
     public bool IsItCharacterPreviewPhase()
     {
         return _characterSelectionPhase;
@@ -109,15 +192,12 @@ public class GameManager : MonoBehaviour
     {
         _characterSelectionPhase = false;
         _prepareCounselPhase = true;
-        theKingsCounselVCam.GetComponent<CinemachineVirtualCamera>().enabled = true;
+        kingsCounselVCam.enabled = true;
     }
 
     private void QuitPreparingARoomForTheKingsCounsel()
     {
-        _prepareCounselPhase = false;
-        _characterSelectionPhase = true;
-
-        _kingsCounselVCam.enabled = false;
+        kingsCounselVCam.enabled = false;
 
         // get the character that was selected before entering the prepare phase
         GameObject characterThatWasSelected = charactersArray.First(character =>
@@ -127,5 +207,33 @@ public class GameManager : MonoBehaviour
             
         characterPreview.enabled = true;
         characterPreview.EnterCharacterPreview();
+    }
+
+    public void DontQuitMenuSceneButton()
+    {
+        menuSoundButton.Play();
+        
+        prepareCounselUI.SetActive(false);
+    }
+    
+    public void QuitMenuSceneButton()
+    {
+        menuSoundButton.Play();
+
+        // dont show menu ui
+        prepareCounselUI.SetActive(false);
+        
+        // switch cameras to go towards door
+        defaultCmFreeLookCam.enabled = false;
+        initialMenuSetupVirtualCamera.enabled = true;
+
+        _fadingOutImage = true;
+    }
+
+    private void StartAnimationLeaveToMenuScene()
+    {
+        // start door animation
+        theDoorsAnimator.SetBool(StartDoorAnimation, true);
+        fadeOutImage.SetActive(true);
     }
 } 

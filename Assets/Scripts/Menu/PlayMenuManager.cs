@@ -16,14 +16,10 @@ public class PlayMenuManager : MonoBehaviour
     private GameObject _createGameMenu;
     private GameObject _privateGameMenu;
     
-    private MenuSoundButton _menuSoundButton;
-    
     private MenuManager _menuManager;
     
     private void Start()
     {
-        _menuSoundButton = gameObject.GetComponent<MenuSoundButton>();
-        
         _menuManager = gameObject.GetComponent<MenuManager>();
         
         var parent = transform.parent;
@@ -36,28 +32,28 @@ public class PlayMenuManager : MonoBehaviour
 
     public void BackButton()
     {
-        _menuSoundButton.PlayButtonClickSound();
+        SoundManager.Instance.ButtonClickSound();
         
         _menuManager.ChangeMenu(_playMenu, _initialMenu);
     }
     
     public void FindGameButton()
     {
-        _menuSoundButton.PlayButtonClickSound();
+        SoundManager.Instance.ButtonClickSound();
         
         _menuManager.ChangeMenu(_playMenu, _findGameMenu);
     }
     
     public void CreateGameButton()
     {
-        _menuSoundButton.PlayButtonClickSound();
+        SoundManager.Instance.ButtonClickSound();
         
         _menuManager.ChangeMenu(_playMenu, _createGameMenu);
     }
     
     public void PrivateGameButton()
     {
-        _menuSoundButton.PlayButtonClickSound();
+        SoundManager.Instance.ButtonClickSound();
         
         _menuManager.ChangeMenu(_playMenu, _privateGameMenu);
     }

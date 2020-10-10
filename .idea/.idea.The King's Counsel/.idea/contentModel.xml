@@ -436,7 +436,6 @@
             <e p="POLYGON_CustomCharacters.shader" t="Include" />
           </e>
         </e>
-        <e p="QuitMenuManager.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Menu" t="Include">
             <e p="CreateGameMenuManager.cs" t="Include" />
@@ -447,6 +446,7 @@
             <e p="PlayMenuManager.cs" t="Include" />
             <e p="PrivateGameMenuManager.cs" t="Include" />
           </e>
+          <e p="MenuSceneManager.cs" t="Include" />
           <e p="PrepareCounsel" t="Include">
             <e p="CharacterHeadLookAtCamera.cs" t="Include" />
             <e p="CharacterPreview.cs" t="Include" />
@@ -455,6 +455,8 @@
             <e p="CMFreelookOnlyWhenRightMouseDown.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
           </e>
+          <e p="QuitMenuManager.cs" t="Include" />
+          <e p="SoundManager.cs" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

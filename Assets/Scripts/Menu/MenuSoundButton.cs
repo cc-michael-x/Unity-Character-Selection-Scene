@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class MenuSoundButton : MonoBehaviour
 {
-    private AudioSource _buttonSound;
+    public AudioSource buttonSound;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        _buttonSound = GameObject.Find("ButtonSound").gameObject.GetComponent<AudioSource>();
-    }
-
     public void PlayButtonClickSound()
     {
-        _buttonSound.Play();
+        buttonSound.Play();
     }
 }

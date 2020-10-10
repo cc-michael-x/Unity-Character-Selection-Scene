@@ -170,6 +170,9 @@ public class CharacterPreview : MonoBehaviour
 
         if (IsTheMouseStateLocked())
             return false;
+
+        if (GameManager.Instance._prepareCounselUIOpened)
+            return false;
         
         return true;
     }

@@ -9,15 +9,10 @@ namespace Menu
         private const string FindGameMenuName = "FindGameMenu";
         private GameObject _playMenu;
         private GameObject _findGameMenu;
-
-        private MenuSoundButton _menuSoundButton;
-        
         private MenuManager _menuManager;
         
         private void Start()
         {
-            _menuSoundButton = gameObject.GetComponent<MenuSoundButton>();
-        
             _menuManager = gameObject.GetComponent<MenuManager>();
             
             var parent = transform.parent;
@@ -27,7 +22,7 @@ namespace Menu
 
         public void BackButton()
         {
-            _menuSoundButton.PlayButtonClickSound();
+            SoundManager.Instance.ButtonClickSound();
         
             _menuManager.ChangeMenu(_findGameMenu, _playMenu);
         }

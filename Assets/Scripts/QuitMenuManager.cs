@@ -10,14 +10,11 @@ public class QuitMenuManager : MonoBehaviour
     private GameObject _initialMenu;
     private GameObject _quitMenu;
 
-    private MenuSoundButton _menuSoundButton;
     
     private MenuManager _menuManager;
     
     private void Start()
     {
-        _menuSoundButton = gameObject.GetComponent<MenuSoundButton>();
-        
         _menuManager = gameObject.GetComponent<MenuManager>();
         
         var parent = transform.parent;
@@ -27,14 +24,14 @@ public class QuitMenuManager : MonoBehaviour
 
     public void NoButton()
     {
-        _menuSoundButton.PlayButtonClickSound();
+        SoundManager.Instance.ButtonClickSound();
         
         _menuManager.ChangeMenu(_quitMenu, _initialMenu);
     }
     
     public void YesButton()
     {
-        _menuSoundButton.PlayButtonClickSound();
+        SoundManager.Instance.ButtonClickSound();
         
         Application.Quit();
     }
