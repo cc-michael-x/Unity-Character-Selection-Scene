@@ -436,6 +436,7 @@
             <e p="POLYGON_CustomCharacters.shader" t="Include" />
           </e>
         </e>
+        <e p="QuitMenuManager.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="Menu" t="Include">
             <e p="CreateGameMenuManager.cs" t="Include" />

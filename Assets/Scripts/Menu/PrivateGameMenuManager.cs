@@ -12,19 +12,24 @@ namespace Menu
 
         private MenuSoundButton _menuSoundButton;
     
+        private MenuManager _menuManager;
+        
         private void Start()
         {
             _menuSoundButton = gameObject.GetComponent<MenuSoundButton>();
         
-            _playMenu = MenuManager.GetMenuByName(PlayMenuName);
-            _privateGameMenu = MenuManager.GetMenuByName(PrivateGameMenuName);
+            _menuManager = gameObject.GetComponent<MenuManager>();
+            
+            var parent = transform.parent;
+            _playMenu = _menuManager.GetMenuByName(parent.gameObject, PlayMenuName);
+            _privateGameMenu = _menuManager.GetMenuByName(parent.gameObject, PrivateGameMenuName);
         }
 
         public void BackButton()
         {
             _menuSoundButton.PlayButtonClickSound();
         
-            MenuManager.ChangeMenu(_privateGameMenu, _playMenu);
+            _menuManager.ChangeMenu(_privateGameMenu, _playMenu);
         }
     }
 }

@@ -18,42 +18,47 @@ public class PlayMenuManager : MonoBehaviour
     
     private MenuSoundButton _menuSoundButton;
     
+    private MenuManager _menuManager;
+    
     private void Start()
     {
         _menuSoundButton = gameObject.GetComponent<MenuSoundButton>();
         
-        _initialMenu = MenuManager.GetMenuByName(InitialMenuName);
-        _playMenu = MenuManager.GetMenuByName(PlayMenuName);
-        _findGameMenu = MenuManager.GetMenuByName(FindGameMenuName);
-        _createGameMenu = MenuManager.GetMenuByName(CreateGameMenuName);
-        _privateGameMenu = MenuManager.GetMenuByName(PrivateGameMenuName);
+        _menuManager = gameObject.GetComponent<MenuManager>();
+        
+        var parent = transform.parent;
+        _initialMenu = _menuManager.GetMenuByName(parent.gameObject, InitialMenuName);
+        _playMenu = _menuManager.GetMenuByName(parent.gameObject, PlayMenuName);
+        _findGameMenu = _menuManager.GetMenuByName(parent.gameObject, FindGameMenuName);
+        _createGameMenu = _menuManager.GetMenuByName(parent.gameObject, CreateGameMenuName);
+        _privateGameMenu = _menuManager.GetMenuByName(parent.gameObject, PrivateGameMenuName);
     }
 
     public void BackButton()
     {
         _menuSoundButton.PlayButtonClickSound();
         
-        MenuManager.ChangeMenu(_playMenu, _initialMenu);
+        _menuManager.ChangeMenu(_playMenu, _initialMenu);
     }
     
     public void FindGameButton()
     {
         _menuSoundButton.PlayButtonClickSound();
         
-        MenuManager.ChangeMenu(_playMenu, _findGameMenu);
+        _menuManager.ChangeMenu(_playMenu, _findGameMenu);
     }
     
     public void CreateGameButton()
     {
         _menuSoundButton.PlayButtonClickSound();
         
-        MenuManager.ChangeMenu(_playMenu, _createGameMenu);
+        _menuManager.ChangeMenu(_playMenu, _createGameMenu);
     }
     
     public void PrivateGameButton()
     {
         _menuSoundButton.PlayButtonClickSound();
         
-        MenuManager.ChangeMenu(_playMenu, _privateGameMenu);
+        _menuManager.ChangeMenu(_playMenu, _privateGameMenu);
     }
 }
