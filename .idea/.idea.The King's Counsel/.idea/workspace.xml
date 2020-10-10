@@ -22,30 +22,9 @@
     <list default="true" id="9a0c28f0-f02d-473c-8c87-42de10469498" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/QuitMenuManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/QuitMenuManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/Component/FadeIn.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/Component/FadeIn.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animations/Component/FadeOut.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Animations/Component/FadeOut.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/Component/Image.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/Component/Image.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/Component/MenuDoor Animator.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/Component/MenuDoor Animator.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/Component/SM_Bld_Castle_Wall_Door_Big_01 (3).controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Animators/Component/SM_Bld_Castle_Wall_Door_Big_01 (3).controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Buildings/Bridge.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Buildings/Bridge.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Buildings/Building.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Buildings/Building.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Buildings/Castle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Buildings/Castle.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PrepareCounselMeeting.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PrepareCounselMeeting.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/CreateGameMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/CreateGameMenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/FindGameMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/FindGameMenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/InitialMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/InitialMenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/MenuSoundButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/MenuSoundButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/PlayMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/PlayMenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/PrivateGameMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/PrivateGameMenuManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Components/CharacterPreviewComponents.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Components/CharacterPreviewComponents.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/CharacterPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/CharacterPreview.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +37,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94777608-5C2A-45BE-BC6A-FA3092A3F6ED/3d/9070d510/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/04258D1C-DC10-4424-8C2A-17A6A31A3CF7/27/81e33fc2/Cursor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CharacterPreviewManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Menu/FindGameMenuManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MenuSceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,7 +62,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu/MenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SceneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MenuSceneManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/CharacterPreview.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu/MenuSoundButton.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SoundManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/QuitMenuManager.cs" />
@@ -91,6 +70,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu/PrivateGameMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu/PlayMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu/InitialMenuManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/CharacterPreviewManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/CharacterPreview.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/GameManager.cs" />
       </list>
     </option>
@@ -147,7 +128,8 @@
       <workItem from="1602077609992" duration="7168000" />
       <workItem from="1602165238901" duration="20675000" />
       <workItem from="1602250803567" duration="7129000" />
-      <workItem from="1602270581323" duration="14780000" />
+      <workItem from="1602270581323" duration="15268000" />
+      <workItem from="1602342551595" duration="2191000" />
     </task>
     <servers />
   </component>
@@ -176,10 +158,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602282198003" />
-    <state x="552" y="253" width="815" height="534" key="find.popup" timestamp="1602308860523">
+    <state x="552" y="253" width="815" height="534" key="find.popup" timestamp="1602344348722">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" width="815" height="534" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602308860523" />
+    <state x="552" y="253" width="815" height="534" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602344348722" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602309235927">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

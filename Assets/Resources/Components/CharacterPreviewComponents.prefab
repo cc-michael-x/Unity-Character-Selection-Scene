@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7391708193246955642}
   - component: {fileID: 7391708193246955645}
   - component: {fileID: 7391708193246955644}
+  - component: {fileID: 6849742305948408221}
   m_Layer: 9
   m_Name: CharacterPreviewComponents
   m_TagString: Untagged
@@ -83,10 +84,10 @@ MonoBehaviour:
   flipY: 0
   constantWidth: 1
   subMeshMask: -1
-  overlay: 0.15
+  overlay: 0
   overlayColor: {r: 1, g: 1, b: 1, a: 1}
   overlayAnimationSpeed: 1
-  overlayMinIntensity: 0.1
+  overlayMinIntensity: 0
   overlayBlending: 1
   outline: 1
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
@@ -205,11 +206,16 @@ MonoBehaviour:
   characterCmFreeLookCam: {fileID: 0}
   glowingHighlightProfile: {fileID: 0}
   triggerHighlightProfile: {fileID: 0}
-  triggerHighlightEffect: {fileID: 0}
-  highlightTrigger: {fileID: 0}
+  defaultCursor: {fileID: 0}
+  characterPreviewHoverCursor: {fileID: 0}
+  characterPreviewHoverExitCursor: {fileID: 0}
   characterPreviewOnOnClickSound: {fileID: 0}
   characterPreviewOffOnClickSound: {fileID: 0}
   bookSound: {fileID: 0}
+  characterPreviewHoverEnterSound: {fileID: 0}
+  characterPreviewHoverExitSound: {fileID: 0}
+  _blockSelect: 0
+  _blockSelectTime: 0
 --- !u!114 &7391708193246955644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +235,15 @@ MonoBehaviour:
     turnSpeed: 10
     maximumRectionDistance: 20
     turnPercentage: 1
+--- !u!114 &6849742305948408221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7391708193246955646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9015d211e6a9c084f96f3b15f93d60ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

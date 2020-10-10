@@ -47,7 +47,8 @@ public class CharacterPreview : MonoBehaviour
     public AudioSource characterPreviewHoverExitSound;
 
     private bool _blockSelect;
-    private float _blockSelectTime = 0f;
+    private float _blockSelectTime;
+    private const float BlockSelectTimeConst = .1f;
     private bool _characterPreview;
     private CinemachineFreeLook _cmDefaultFreeLook;
     private CinemachineVirtualCamera _cmCharacterFreeLook;
@@ -55,7 +56,6 @@ public class CharacterPreview : MonoBehaviour
     private Animator _animator;
     private static readonly int Preview = Animator.StringToHash("CharacterPreview");
     private static readonly int Play = Animator.StringToHash("Play");
-    private const float _blockSelectTimeConst = 2f;
 
     private void Start()
     {
@@ -83,9 +83,9 @@ public class CharacterPreview : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.Instance.IsItCharacterPreviewPhase())
-            enabled = false;
-
+        // check if we are temporarily blocked from selecting a character
+        // this is so that we leave some time for camera animation to switch back to a normal camera view or
+        // to view a character preview
         if (!_blockSelect)
         {
             if (Input.GetKey("escape"))
@@ -171,9 +171,6 @@ public class CharacterPreview : MonoBehaviour
         if (IsTheMouseStateLocked())
             return false;
 
-        if (GameManager.Instance._prepareCounselUIOpened)
-            return false;
-        
         return true;
     }
 
@@ -242,7 +239,7 @@ public class CharacterPreview : MonoBehaviour
     public void BlockSelect()
     {
         _blockSelect = true; // block the input
-        _blockSelectTime = _blockSelectTimeConst;
+        _blockSelectTime = BlockSelectTimeConst;
         NonTriggerCharacterPreviewGlowingEffect();
     }
 

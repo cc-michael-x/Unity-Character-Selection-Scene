@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Phases")] 
     public bool _characterSelectionPhase;
+    public bool _characterPreviewPhase;
     public bool _prepareCounselPhase;
     public bool _prepareCounselUIOpened;
     
@@ -47,6 +48,10 @@ public class GameManager : MonoBehaviour
     [Header("Animators")]
     public Animator theDoorsAnimator;
     private static readonly int StartDoorAnimation = Animator.StringToHash("StartDoorAnimation");
+    
+    private bool _blockSelect;
+    private float _blockSelectTime;
+    private const float BlockSelectTimeConst = 1f;
     
     private void Start()
     {
@@ -135,13 +140,25 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
         }
         
+        // Wait until waitTime is below or equal to zero.
+        if(_blockSelectTime > 0) {
+            _blockSelectTime -= Time.deltaTime;
+        } else {
+            // Done.
+            _blockSelect = false;
+        }
+        
         if (Input.GetKeyDown("escape"))
         {
+            if (_blockSelect)
+                return;
+            
             if (_prepareCounselPhase)
             {
                 QuitPreparingARoomForTheKingsCounsel();
                 _prepareCounselPhase = false;
-                _characterSelectionPhase = true;
+                _characterSelectionPhase = false;
+                _characterPreviewPhase = true;
                 _prepareCounselUIOpened = false;
             }
             else if (_characterSelectionPhase)
@@ -149,6 +166,7 @@ public class GameManager : MonoBehaviour
                 prepareCounselUI.SetActive(true);
                 _prepareCounselPhase = false;
                 _characterSelectionPhase = false;
+                _characterPreviewPhase = false;
                 _prepareCounselUIOpened = true;
             }
             else if (_prepareCounselUIOpened)
@@ -156,9 +174,16 @@ public class GameManager : MonoBehaviour
                 prepareCounselUI.SetActive(false);
                 _prepareCounselPhase = false;
                 _characterSelectionPhase = true;
+                _characterPreviewPhase = false;
                 _prepareCounselUIOpened = false;
             }
         }
+    }
+    
+    public void BlockEscapeKey()
+    {
+        _blockSelect = true; // block the input
+        _blockSelectTime = BlockSelectTimeConst;
     }
 
     private void EnterPrepareCounselScene()
@@ -166,17 +191,23 @@ public class GameManager : MonoBehaviour
         _fadingInImage = true;
         fadeInImage.SetActive(true);
     }
-    
-    public bool IsItCharacterPreviewPhase()
-    {
-        return _characterSelectionPhase;
-    }
-    
+
     // disable all other character preview components that isn't the currently selected character preview
     public void SetCurrentCharacterPreview(string characterName)
     {
         if (!characterName.IsNullOrEmpty())
+        {
             currentCharacterSelected = characterName;
+            _characterPreviewPhase = true;
+            _characterSelectionPhase = false;
+        }
+        else
+        {
+            _characterPreviewPhase = false;
+            _characterSelectionPhase = true;
+        }
+
+        BlockEscapeKey();
         
         GameObject[] nonSelectedCharacterPreviews = 
             charactersArray.Where(character => 
@@ -190,15 +221,18 @@ public class GameManager : MonoBehaviour
 
     public void PrepareARoomForTheKingsCounsel()
     {
-        _characterSelectionPhase = false;
+        _characterPreviewPhase = false;
         _prepareCounselPhase = true;
         kingsCounselVCam.enabled = true;
     }
 
     private void QuitPreparingARoomForTheKingsCounsel()
     {
+        _characterPreviewPhase = true;
+        _prepareCounselPhase = false;
+        
         kingsCounselVCam.enabled = false;
-
+        
         // get the character that was selected before entering the prepare phase
         GameObject characterThatWasSelected = charactersArray.First(character =>
             character.transform.parent.gameObject.name == currentCharacterSelected);
@@ -214,6 +248,10 @@ public class GameManager : MonoBehaviour
         menuSoundButton.Play();
         
         prepareCounselUI.SetActive(false);
+        _prepareCounselPhase = false;
+        _characterSelectionPhase = true;
+        _characterPreviewPhase = false;
+        _prepareCounselUIOpened = false;
     }
     
     public void QuitMenuSceneButton()
