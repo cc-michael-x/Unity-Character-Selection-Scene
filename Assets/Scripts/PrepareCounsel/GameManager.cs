@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Header("Phases")] 
+    public const int CharacterSelectionPhase = 1;
+    public const int CharacterPreviewPhase = 2;
+    public const int PrepareCounselPhase = 3;
+    public const int PrepareCounselUIOpened = 4;
     public bool _characterSelectionPhase;
     public bool _characterPreviewPhase;
     public bool _prepareCounselPhase;
@@ -49,9 +53,10 @@ public class GameManager : MonoBehaviour
     public Animator theDoorsAnimator;
     private static readonly int StartDoorAnimation = Animator.StringToHash("StartDoorAnimation");
     
-    private bool _blockSelect;
-    private float _blockSelectTime;
-    private const float BlockSelectTimeConst = 1f;
+    [Header("Escape block config")]
+    public bool _blockEscapeKey;
+    public float _blockEscapeKeyTime;
+    public const float BlockEscapeTimeConst = 1f;
     
     private void Start()
     {
@@ -61,7 +66,7 @@ public class GameManager : MonoBehaviour
         EnterPrepareCounselScene();
         
         // start with character selection phase
-        _characterSelectionPhase = true;
+        SetPhase(CharacterSelectionPhase);
         
         // enable main lobby free look cam
         defaultCmFreeLookCam.enabled = true;
@@ -104,6 +109,8 @@ public class GameManager : MonoBehaviour
             }
         }
         
+        // when going to the menu scene
+        // delay the 1st camera so that we can have time to look at the door we are exiting through
         if (_fadingOutImage)
         {
             _initialMenuSetupVirtualCameraTime -= Time.deltaTime;
@@ -141,49 +148,89 @@ public class GameManager : MonoBehaviour
         }
         
         // Wait until waitTime is below or equal to zero.
-        if(_blockSelectTime > 0) {
-            _blockSelectTime -= Time.deltaTime;
+        if(_blockEscapeKeyTime > 0) {
+            _blockEscapeKeyTime -= Time.deltaTime;
         } else {
             // Done.
-            _blockSelect = false;
+            _blockEscapeKey = false;
         }
         
-        if (Input.GetKeyDown("escape"))
+        // escape key handler
+        if (!_blockEscapeKey && Input.GetKeyDown("escape"))
         {
-            if (_blockSelect)
-                return;
-            
-            if (_prepareCounselPhase)
-            {
-                QuitPreparingARoomForTheKingsCounsel();
-                _prepareCounselPhase = false;
-                _characterSelectionPhase = false;
-                _characterPreviewPhase = true;
-                _prepareCounselUIOpened = false;
-            }
-            else if (_characterSelectionPhase)
-            {
-                prepareCounselUI.SetActive(true);
-                _prepareCounselPhase = false;
-                _characterSelectionPhase = false;
-                _characterPreviewPhase = false;
-                _prepareCounselUIOpened = true;
-            }
-            else if (_prepareCounselUIOpened)
-            {
-                prepareCounselUI.SetActive(false);
-                _prepareCounselPhase = false;
-                _characterSelectionPhase = true;
-                _characterPreviewPhase = false;
-                _prepareCounselUIOpened = false;
-            }
+            EscapeKeyDownHandler();
         }
     }
-    
-    public void BlockEscapeKey()
+
+    private void EscapeKeyDownHandler()
     {
-        _blockSelect = true; // block the input
-        _blockSelectTime = BlockSelectTimeConst;
+        if (_prepareCounselPhase)
+        {
+            BlockEscapeKey();
+
+            QuitPreparingARoomForTheKingsCounsel();
+            SetPhase(CharacterPreviewPhase);
+        }
+        else if (_characterSelectionPhase)
+        {
+            prepareCounselUI.SetActive(true);
+            SetPhase(PrepareCounselUIOpened);
+        }
+        else if (_prepareCounselUIOpened)
+        {
+            prepareCounselUI.SetActive(false);
+            SetPhase(CharacterSelectionPhase);
+        }
+    }
+
+    private void SetPhase(int phase)
+    {
+        // reset all phases
+        _prepareCounselPhase = false;
+        _characterSelectionPhase = false;
+        _characterPreviewPhase = false;
+        _prepareCounselUIOpened = false;
+        
+        // set the current phase
+        switch (phase)
+        {
+            case CharacterSelectionPhase:
+                _characterSelectionPhase = true;
+                break;
+            case CharacterPreviewPhase:
+                _characterPreviewPhase = true;
+                break;
+            case PrepareCounselPhase:
+                _prepareCounselPhase = true;
+                break;
+            case PrepareCounselUIOpened:
+                _prepareCounselUIOpened = true;
+                break;
+        }
+    }
+
+    public bool GetPhase(int phase)
+    {
+        // set the current phase
+        switch (phase)
+        {
+            case CharacterSelectionPhase:
+                return _characterSelectionPhase;
+            case CharacterPreviewPhase:
+                return _characterPreviewPhase;
+            case PrepareCounselPhase:
+                return _prepareCounselPhase;
+            case PrepareCounselUIOpened:
+                return _prepareCounselUIOpened;
+        }
+
+        return false;
+    }
+
+    private void BlockEscapeKey()
+    {
+        _blockEscapeKey = true; // block the input
+        _blockEscapeKeyTime = BlockEscapeTimeConst;
     }
 
     private void EnterPrepareCounselScene()
@@ -198,13 +245,11 @@ public class GameManager : MonoBehaviour
         if (!characterName.IsNullOrEmpty())
         {
             currentCharacterSelected = characterName;
-            _characterPreviewPhase = true;
-            _characterSelectionPhase = false;
+            SetPhase(CharacterPreviewPhase);
         }
         else
         {
-            _characterPreviewPhase = false;
-            _characterSelectionPhase = true;
+            SetPhase(CharacterSelectionPhase);
         }
 
         BlockEscapeKey();
@@ -221,16 +266,14 @@ public class GameManager : MonoBehaviour
 
     public void PrepareARoomForTheKingsCounsel()
     {
-        _characterPreviewPhase = false;
-        _prepareCounselPhase = true;
+        SetPhase(PrepareCounselPhase);
         kingsCounselVCam.enabled = true;
     }
 
     private void QuitPreparingARoomForTheKingsCounsel()
     {
-        _characterPreviewPhase = true;
-        _prepareCounselPhase = false;
-        
+        SetPhase(CharacterPreviewPhase);
+
         kingsCounselVCam.enabled = false;
         
         // get the character that was selected before entering the prepare phase
@@ -248,10 +291,7 @@ public class GameManager : MonoBehaviour
         menuSoundButton.Play();
         
         prepareCounselUI.SetActive(false);
-        _prepareCounselPhase = false;
-        _characterSelectionPhase = true;
-        _characterPreviewPhase = false;
-        _prepareCounselUIOpened = false;
+        SetPhase(CharacterSelectionPhase);
     }
     
     public void QuitMenuSceneButton()

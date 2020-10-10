@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a0c28f0-f02d-473c-8c87-42de10469498" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/CharacterPreviewManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CharacterPreviewManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The King's Counsel/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CharacterPreviewManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CharacterPreviewManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +70,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Menu/InitialMenuManager.cs" />
         <option value="$PROJECT_DIR$/Assets/CharacterPreviewManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/CharacterPreview.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CharacterPreviewManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PrepareCounsel/GameManager.cs" />
       </list>
     </option>
@@ -127,7 +128,8 @@
       <workItem from="1602165238901" duration="20675000" />
       <workItem from="1602250803567" duration="7129000" />
       <workItem from="1602270581323" duration="15268000" />
-      <workItem from="1602342551595" duration="2493000" />
+      <workItem from="1602342551595" duration="2794000" />
+      <workItem from="1602350295655" duration="870000" />
     </task>
     <servers />
   </component>

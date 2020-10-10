@@ -16,11 +16,12 @@ public class CharacterPreviewManager : MonoBehaviour
     private void Update()
     {
         // check if were in a phase where we cannot select a character anymore
-        if (GameManager.Instance._prepareCounselPhase || GameManager.Instance._prepareCounselUIOpened)
+        if (GameManager.Instance.GetPhase(GameManager.PrepareCounselPhase) || 
+            GameManager.Instance.GetPhase(GameManager.PrepareCounselUIOpened))
         {
             _characterPreview.enabled = false;
         }
-        else if (GameManager.Instance._characterSelectionPhase)
+        else if (GameManager.Instance.GetPhase(GameManager.CharacterSelectionPhase))
         {
             _characterPreview.enabled = true;
         }
