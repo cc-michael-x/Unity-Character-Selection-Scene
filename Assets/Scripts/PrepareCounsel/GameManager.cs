@@ -17,10 +17,12 @@ public class GameManager : MonoBehaviour
     public const int CharacterPreviewPhase = 2;
     public const int PrepareCounselPhase = 3;
     public const int PrepareCounselUIOpened = 4;
+    public const int ExitingToMenuPhase = 5;
     public bool _characterSelectionPhase;
     public bool _characterPreviewPhase;
     public bool _prepareCounselPhase;
     public bool _prepareCounselUIOpened;
+    public bool _exitingToMenuPhase;
     
     [Header("Cameras")]
     public CinemachineVirtualCamera initialMenuSetupVirtualCamera;
@@ -164,6 +166,9 @@ public class GameManager : MonoBehaviour
 
     private void EscapeKeyDownHandler()
     {
+        if (_exitingToMenuPhase)
+            return;
+        
         if (_prepareCounselPhase)
         {
             BlockEscapeKey();
@@ -190,6 +195,7 @@ public class GameManager : MonoBehaviour
         _characterSelectionPhase = false;
         _characterPreviewPhase = false;
         _prepareCounselUIOpened = false;
+        _exitingToMenuPhase = false;
         
         // set the current phase
         switch (phase)
@@ -205,6 +211,9 @@ public class GameManager : MonoBehaviour
                 break;
             case PrepareCounselUIOpened:
                 _prepareCounselUIOpened = true;
+                break;
+            case ExitingToMenuPhase:
+                _exitingToMenuPhase = true;
                 break;
         }
     }
@@ -298,6 +307,8 @@ public class GameManager : MonoBehaviour
     {
         menuSoundButton.Play();
 
+        SetPhase(ExitingToMenuPhase);
+        
         // dont show menu ui
         prepareCounselUI.SetActive(false);
         

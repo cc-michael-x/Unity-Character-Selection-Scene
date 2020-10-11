@@ -16419,7 +16419,7 @@ GameObject:
   - component: {fileID: 1637376383}
   - component: {fileID: 1637376384}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: PrepareCounselManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16452,8 +16452,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterSelectionPhase: 0
+  _characterPreviewPhase: 0
   _prepareCounselPhase: 0
   _prepareCounselUIOpened: 0
+  _exitingToMenuPhase: 0
   initialMenuSetupVirtualCamera: {fileID: 1863474978}
   followUpMenuVirtualCamera: {fileID: 1719571492}
   defaultCmFreeLookCam: {fileID: 1330260990}
@@ -16469,6 +16471,8 @@ MonoBehaviour:
   mainMusic: {fileID: 1634652754}
   menuSoundButton: {fileID: 1637376384}
   theDoorsAnimator: {fileID: 5304628399927246074}
+  _blockEscapeKey: 0
+  _blockEscapeKeyTime: 0
 --- !u!82 &1637376384
 AudioSource:
   m_ObjectHideFlags: 0
