@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 6a6423c2d2c595c4f83b302d3ee4bd94
   - enabled: 1
-    path: Assets/Scenes/PrepareCounselMeeting.unity
+    path: Assets/Scenes/CharacterSelection.unity
     guid: 592fc4e7b5861434496b572ff1a29380
   m_configObjects: {}

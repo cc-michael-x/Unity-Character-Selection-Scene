@@ -57,7 +57,7 @@ public class MenuSceneManager : MonoBehaviour
 
             if (_fadingOutImageTime <= 0)
             {
-                SceneManager.LoadScene("PrepareCounselMeeting");
+                SceneManager.LoadScene("CharacterSelection");
                 _fadingOutImage = false;
             }
         }
