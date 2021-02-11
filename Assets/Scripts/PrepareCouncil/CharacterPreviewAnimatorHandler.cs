@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterPreviewAnimatorHandler : StateMachineBehaviour
 {
-    private static readonly string _gameManager = "GameManager";
+    private static readonly string _gameManager = "PrepareCouncilManager";
     private static readonly string _characterPreviewComponents = "CharacterPreviewComponents";
     private static readonly string _characterPreviewCanvas = "CharacterPreviewCanvas";
     private static readonly int Play = Animator.StringToHash("Play");
