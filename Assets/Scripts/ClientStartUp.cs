@@ -37,7 +37,7 @@ public class ClientStartUp : MonoBehaviour
             SoundManager.Instance.ButtonClickSound();
 
             // start fade out of scene
-            MenuSceneManager.Instance.EnterPrepareCounselScene();
+            MenuSceneManager.Instance.EnterPrepareCouncilScene();
         }
     }
 
@@ -110,7 +110,7 @@ public class ClientStartUp : MonoBehaviour
 
         SoundManager.Instance.ButtonClickSound();
         // start fade out of scene
-        MenuSceneManager.Instance.EnterPrepareCounselScene();
+        MenuSceneManager.Instance.EnterPrepareCouncilScene();
     }
 
     private void OnRequestMultiplayerServerError(PlayFabError error)

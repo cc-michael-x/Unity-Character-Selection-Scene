@@ -61,7 +61,6 @@ public class MenuSceneManager : MonoBehaviour
                 _fadingOutImage = false;
             }
         }
-            
     }
 
     private void EnterMenuScene()
@@ -70,7 +69,7 @@ public class MenuSceneManager : MonoBehaviour
         fadeInImage.SetActive(true);
     }
 
-    public void EnterPrepareCounselScene()
+    public void EnterPrepareCouncilScene()
     {
         // start door animation
         theDoorsAnimator.SetBool(StartDoorAnimation, true);

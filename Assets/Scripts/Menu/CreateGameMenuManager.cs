@@ -57,7 +57,7 @@ namespace Menu
             SoundManager.Instance.ButtonClickSound();
 
             // start fade out of scene
-            MenuSceneManager.Instance.EnterPrepareCounselScene();
+            MenuSceneManager.Instance.EnterPrepareCouncilScene();
         }
     }
 }

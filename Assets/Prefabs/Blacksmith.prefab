@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 7884544407854644916}
   - component: {fileID: 7797756957732081140}
   - component: {fileID: -6926028815610899707}
+  - component: {fileID: -3294628917777340718}
   m_Layer: 0
   m_Name: Blacksmith
   m_TagString: Untagged
@@ -225,6 +226,25 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   m_AssetId: 
+--- !u!114 &-3294628917777340718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881447271567754452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  compressRotation: 1
 --- !u!1 &7881456776028653140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,13 +2218,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7720696101539206456, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
   m_PrefabInstance: {fileID: 7882843147447002598}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3044202705724772668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5141512259380540634, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
-  m_PrefabInstance: {fileID: 7882843147447002598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3044202705724772669 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5141512259380540635, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
+  m_PrefabInstance: {fileID: 7882843147447002598}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3044202705724772668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5141512259380540634, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
   m_PrefabInstance: {fileID: 7882843147447002598}
   m_PrefabAsset: {fileID: 0}

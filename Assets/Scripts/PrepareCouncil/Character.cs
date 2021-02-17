@@ -1,20 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Character : MonoBehaviour
+namespace PrepareCouncil
 {
-    public GameObject characterPrefab;
-
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(fileName = "New Character", menuName = "Character Selection/Character")]
+    public class Character : ScriptableObject
     {
+        [SerializeField] private string characterName;
+        [SerializeField] public GameObject previewCharacterPrefab;
+        [SerializeField] private GameObject gameplayCharacterPrefab;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        public string CharacterName => characterName;
+        public GameObject PreviewCharacterPrefab => previewCharacterPrefab;
+        public GameObject GameplayCharacterPrefab => gameplayCharacterPrefab;
     }
 }

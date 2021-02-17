@@ -570,6 +570,7 @@ GameObject:
   - component: {fileID: 3847241027239711982}
   - component: {fileID: 3763337972119263650}
   - component: {fileID: 5011767972042197118}
+  - component: {fileID: 236920451804416561}
   m_Layer: 9
   m_Name: Jester
   m_TagString: Untagged
@@ -630,6 +631,25 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   m_AssetId: 
+--- !u!114 &236920451804416561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3849918888750608424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  compressRotation: 1
 --- !u!1 &3849921622628897196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1886,11 +1906,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
---- !u!1 &8228538396657960306 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5141512259380540634, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
-  m_PrefabInstance: {fileID: 3849441042160202152}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6795538252456027280 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7720696101539206456, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
@@ -1899,6 +1914,11 @@ GameObject:
 --- !u!224 &8228538396657960307 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5141512259380540635, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
+  m_PrefabInstance: {fileID: 3849441042160202152}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8228538396657960306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5141512259380540634, guid: 4a84c6200796a8e42854f7c43447863b, type: 3}
   m_PrefabInstance: {fileID: 3849441042160202152}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3849441042239516483

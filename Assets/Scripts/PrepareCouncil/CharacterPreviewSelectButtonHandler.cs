@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PrepareCouncil;
 using UnityEngine;
 
 public class CharacterPreviewSelectButtonHandler : MonoBehaviour
@@ -26,10 +27,9 @@ public class CharacterPreviewSelectButtonHandler : MonoBehaviour
         // start prepare room for counsel phase
         //GameManager.Instance.PrepareARoomForTheKingsCounsel();
 
-        NetworkManager networkManager = GameObject.Find("NetworkManager").gameObject.GetComponent<NetworkManager>();
-        networkManager.playerPrefab = parentCharacterPreviewCanvas.transform.parent.gameObject.GetComponent<Character>().characterPrefab;
-        ClientScene.AddPlayer();
-        Debug.Log("Added Myself");
+        /*GameObject characterPrefab = Instantiate(parentCharacterPreviewCanvas.transform.parent.gameObject
+            .GetComponent<Character>().characterPrefab, gameObject.transform);
+        NetworkServer.Spawn(characterPrefab, NetworkClient.connection);*/
     }
 
     private CharacterPreview GetThisCharacterPreview()
