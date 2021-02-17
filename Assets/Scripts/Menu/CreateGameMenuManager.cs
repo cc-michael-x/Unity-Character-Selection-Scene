@@ -23,7 +23,14 @@ namespace Menu
         
         private MenuManager _menuManager;
         private bool _switchingScene;
-        
+
+        public static CreateGameMenuManager Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         private void Start()
         {
             _menuManager = gameObject.GetComponent<MenuManager>();
